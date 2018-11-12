@@ -44,7 +44,8 @@ ActiveRecord::Schema.define(version: 2018_11_12_184026) do
   create_table "posts", force: :cascade do |t|
     t.integer "user_id"
     t.integer "cocktail_id"
-    t.string "keywords"
+    t.string "keyword1"
+    t.string "keyword2"
     t.string "image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

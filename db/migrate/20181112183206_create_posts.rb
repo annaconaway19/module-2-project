@@ -3,7 +3,8 @@ class CreatePosts < ActiveRecord::Migration[5.2]
     create_table :posts do |t|
       t.integer :user_id
       t.integer :cocktail_id
-      t.string :keywords
+      t.string :keyword1
+      t.string :keyword2
       t.string :image_url
 
       t.timestamps

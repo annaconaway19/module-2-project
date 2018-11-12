@@ -1,0 +1,13 @@
+<h1>Add a drink to my post page!</h1>
+
+<%= form_for @post do |f| %>
+<%= f.label "Cocktail Name" %>
+<%= f.collection_select :cocktail_id, Cocktail.all, :id, :name %>
+<%= f.label :keyword1 %>
+<%= f.collection_select :keyword1, @drink_flavors, :to_s, :to_s %>
+<%= f.label :keyword2 %>
+<%= f.collection_select :keyword2, @drink_flavors, :to_s, :to_s %>
+<%= f.label "Image URL" %>
+<%= f.text_field :image_url %>
+<%= f.submit %>
+<%end%>

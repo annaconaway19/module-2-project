@@ -1,0 +1,8 @@
+<h1>Welcome <%= @user.first_name %></h1>
+
+<h2>Your favorite cocktails:</h2>
+<% @posts.each do |post| %>
+
+<%= post.cocktail.name %>
+<%= post.keywords %>
+<%end%>
