@@ -1,0 +1,8 @@
+<%= @post.cocktail.name %>
+<%= @post.user.username %>
+<img src="<%= @post.image_url %>" />
+<%= @post.cocktail.description %>
+
+<%= @post.cocktail.ingredients.each do |ingr| %>
+  <%= "#{ingr.name} - #{ingr.quantity}" %>
+<% end %>

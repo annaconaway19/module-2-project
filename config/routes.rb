@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :flavors
   # resources :cocktail_ingredients
   # resources :likes
   resources :ingredients, only: [:index]

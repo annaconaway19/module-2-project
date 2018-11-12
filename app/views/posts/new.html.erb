@@ -3,10 +3,10 @@
 <%= form_for @post do |f| %>
 <%= f.label "Cocktail Name" %>
 <%= f.collection_select :cocktail_id, Cocktail.all, :id, :name %>
-<%= f.label :keyword1 %>
-<%= f.collection_select :keyword1, @drink_flavors, :to_s, :to_s %>
+<%= f.label :flavor %>
+<%= f.collection_select :flavor, Flavor.all, :id, :keyword1 %>
 <%= f.label :keyword2 %>
-<%= f.collection_select :keyword2, @drink_flavors, :to_s, :to_s %>
+<%= f.collection_select :flavor, Flavor.all, :id, :keyword2 %>
 <%= f.label "Image URL" %>
 <%= f.text_field :image_url %>
 <%= f.submit %>
