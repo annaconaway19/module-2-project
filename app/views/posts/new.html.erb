@@ -1,6 +1,7 @@
 <h1>Add a drink to my post page!</h1>
 
 <%= form_for @post do |f| %>
+<%= f.hidden_field :author_id, :value => session[:user_id] %>
 <%= f.label "Cocktail Name" %>
   <%= f.collection_select :cocktail_id, Cocktail.all, :id, :name %>
 

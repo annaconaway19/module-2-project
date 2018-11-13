@@ -2,18 +2,17 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
-
   end
 
   def new
     #byebug
-    @post = Post.new
+    @post = Post.new(author_id: session[:user_id])
     @post.post_flavors.build
     @post.post_flavors.build
   end
 
   def create
-    @post = Post.create(post_params)
+    @post = Post.create!(post_params)
 
     # if @post.valid?
     #   @post.save
@@ -31,7 +30,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:user_id, :cocktail_id, :image_url,
+    params.require(:post).permit(:author_id, :cocktail_id, :image_url,
       post_flavors_attributes: [
         :post_id, :flavor_id
         ])
