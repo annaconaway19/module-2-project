@@ -1,6 +1,8 @@
 <% @posts.each do |post| %>
-<%= link_to post.cocktail.name, post %>
-<%= post.flavors[0].keyword %>
-<%= post.flavors[1].keyword %>
-<img src="<%= post.image_url %>">
-<%end%>
+  <%= link_to post.cocktail.name, post %>
+  <%= post.flavors[0].keyword %>
+  <%= post.flavors[1].keyword %>
+  <img src="<%= post.image_url %>">
+  <%= render "likes/like_button" %>
+
+<% end %>

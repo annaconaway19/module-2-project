@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :cocktails, only: [:index]
   resources :posts, except: [:edit, :update, :delete]
   resources :users, only: [:new, :create, :show, :update, :destroy]
+  resources :likes, only: [:create, :destroy]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   get '/login', to: 'sessions#new'
@@ -15,4 +16,5 @@ Rails.application.routes.draw do
   get '/users/:id/account', to: 'users#edit', as: 'account'
   patch '/users/:id', to: 'users#update'
   delete '/users/:id', to: 'users#destroy'
+
 end
