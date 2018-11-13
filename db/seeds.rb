@@ -34,12 +34,22 @@ drink_flavors.each do |flavor|
   Flavor.create(keyword: flavor)
 end
 
-post_flavor1 = PostFlavor.create(post: Post.all.sample, flavor: Flavor.all.sample)
-post_flavor2 = PostFlavor.create(post: Post.all.sample, flavor: Flavor.all.sample)
-post_flavor3 = PostFlavor.create(post: Post.all.sample, flavor: Flavor.all.sample)
-post_flavor4 = PostFlavor.create(post: Post.all.sample, flavor: Flavor.all.sample)
-post_flavor5 = PostFlavor.create(post: Post.all.sample, flavor: Flavor.all.sample)
+post1 = Post.create!(user: User.all.sample, cocktail: Cocktail.all.sample, image_url: 'https://cdn.liquor.com/wp-content/uploads/2016/07/14070101/aviation-720FB.jpg')
 
+post2 = Post.create(user: User.all.sample, cocktail: Cocktail.all.sample, image_url: 'https://www.saveur.com/sites/saveur.com/files/styles/1000_1x_/public/copper-king-6_2000x1500.jpg?itok=vMhh96oB&fc=50,50')
+
+post3 = Post.create(user: User.all.sample, cocktail: Cocktail.all.sample, image_url: "https://cdn.liquor.com/wp-content/uploads/2011/07/05125158/fa-Whiskey-Sour.jpg")
+
+Post.all.each do |post|
+  PostFlavor.create(post: post, flavor: Flavor.all.sample)
+  PostFlavor.create(post: post, flavor: Flavor.all.sample)
+end
+
+# post_flavor1 = PostFlavor.create(post: Post.all.sample, flavor: Flavor.all.sample)
+# post_flavor2 = PostFlavor.create(post: Post.all.sample, flavor: Flavor.all.sample)
+# post_flavor3 = PostFlavor.create(post: Post.all.sample, flavor: Flavor.all.sample)
+# post_flavor4 = PostFlavor.create(post: Post.all.sample, flavor: Flavor.all.sample)
+# post_flavor5 = PostFlavor.create(post: Post.all.sample, flavor: Flavor.all.sample)
 
 ing1 = Ingredient.create(name: "purple drank", quantity: "3 oz")
 ing2 = Ingredient.create(name: "lemonade", quantity: "5 oz")
@@ -54,3 +64,14 @@ cocktail_ing3 = CocktailIngredient.create(cocktail_id: 1, ingredient_id: 3)
 cocktail_ing4 = CocktailIngredient.create(cocktail_id: 2, ingredient_id: 4)
 cocktail_ing5 = CocktailIngredient.create(cocktail_id: 2, ingredient_id: 5)
 cocktail_ing6 = CocktailIngredient.create(cocktail_id: 2, ingredient_id: 6)
+
+like1 = Like.create(post: Post.all.sample, user: User.all.sample)
+like2 = Like.create(post: Post.all.sample, user: User.all.sample)
+like3 = Like.create(post: Post.all.sample, user: User.all.sample)
+like4 = Like.create(post: Post.all.sample, user: User.all.sample)
+like5 = Like.create(post: Post.all.sample, user: User.all.sample)
+like6 = Like.create(post: Post.all.sample, user: User.all.sample)
+like7 = Like.create(post: Post.all.sample, user: User.all.sample)
+like8 = Like.create(post: Post.all.sample, user: User.all.sample)
+like9 = Like.create(post: Post.all.sample, user: User.all.sample)
+like10 = Like.create(post: Post.all.sample, user: User.all.sample)

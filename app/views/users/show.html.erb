@@ -1,7 +1,13 @@
 <h1>Welcome <%= @user.first_name %></h1>
 
-<h2>Your favorite cocktails:</h2>
+<h2>Your Posts:</h2>
 <% @user.posts.each do |post| %>
 <%= post.cocktail.name %>
 <img src="<%= post.image_url %>" />
+<%end%>
+
+<h2>Posts You've Liked:</h2>
+<% @user.likes.each do |like| %>
+<%= like.post.cocktail.name %>
+<img src="<%= like.post.image_url %>" />
 <%end%>

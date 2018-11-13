@@ -43,8 +43,10 @@ ActiveRecord::Schema.define(version: 2018_11_13_144316) do
   end
 
   create_table "likes", force: :cascade do |t|
+    t.integer "liker_id"
     t.integer "post_id"
-    t.integer "count"
+    t.integer "count", default: 0
+    t.boolean "liked", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -57,7 +59,7 @@ ActiveRecord::Schema.define(version: 2018_11_13_144316) do
   end
 
   create_table "posts", force: :cascade do |t|
-    t.integer "user_id"
+    t.integer "author_id"
     t.integer "cocktail_id"
     t.string "image_url"
     t.datetime "created_at", null: false
@@ -69,7 +71,7 @@ ActiveRecord::Schema.define(version: 2018_11_13_144316) do
     t.string "first_name"
     t.string "last_name"
     t.string "username"
-    t.string "password"
+    t.string "password_digest"
     t.integer "age"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
