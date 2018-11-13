@@ -2,6 +2,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
+
   end
 
   def new
@@ -12,7 +13,6 @@ class PostsController < ApplicationController
   end
 
   def create
-    byebug
     @post = Post.create(post_params)
 
     # if @post.valid?

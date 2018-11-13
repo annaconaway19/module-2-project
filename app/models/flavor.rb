@@ -1,4 +1,4 @@
 class Flavor < ApplicationRecord
-  belongs_to :post
   has_many :post_flavors
+  has_many :posts, through: :post_flavors
 end

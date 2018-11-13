@@ -1,8 +1,13 @@
-<%= @post.cocktail.name %>
-<%= @post.user.username %>
-<img src="<%= @post.image_url %>" />
-<%= @post.cocktail.description %>
+<h1>More about <%= @post.cocktail.name %>:</h1>
+<h2>Favorited by <%= link_to @post.user.username, user_path(@post.user) %></h2>
+    <img src="<%= @post.image_url %>" />
+    <div>
+      <%= @post.cocktail.description %>
+    </div>
 
-<%= @post.cocktail.ingredients.each do |ingr| %>
-  <%= "#{ingr.name} - #{ingr.quantity}" %>
-<% end %>
+    <div>
+      <% @post.cocktail.ingredients.each do |ingr| %>
+        <%= "#{ingr.name} - #{ingr.quantity}" %>
+    </div>
+
+    <% end %>
