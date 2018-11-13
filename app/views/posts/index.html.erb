@@ -1,5 +1,6 @@
 <% @posts.each do |post| %>
 <%= link_to post.cocktail.name, post %>
-<%= post.flavors %>
+<%= post.flavors[0].keyword %>
+<%= post.flavors[1].keyword %>
 <img src="<%= post.image_url %>">
 <%end%>

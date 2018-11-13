@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 2018_11_13_144316) do
 
   create_table "likes", force: :cascade do |t|
     t.integer "post_id"
-    t.integer "count"
+    t.integer "count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
