@@ -59,7 +59,10 @@ cocktail_ing4 = CocktailIngredient.create(cocktail_id: 2, ingredient_id: 4)
 cocktail_ing5 = CocktailIngredient.create(cocktail_id: 2, ingredient_id: 5)
 cocktail_ing6 = CocktailIngredient.create(cocktail_id: 2, ingredient_id: 6)
 
-like1 = Like.create(post: Post.all.sample, user: User.all.sample)
+like1 = Like.create(post: Post.all.sample,
+  user: User.all.sample,
+  if Like.where()
+)
 like2 = Like.create(post: Post.all.sample, user: User.all.sample)
 like3 = Like.create(post: Post.all.sample, user: User.all.sample)
 like4 = Like.create(post: Post.all.sample, user: User.all.sample)
