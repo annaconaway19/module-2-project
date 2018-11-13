@@ -59,8 +59,6 @@ ActiveRecord::Schema.define(version: 2018_11_13_144316) do
   create_table "posts", force: :cascade do |t|
     t.integer "user_id"
     t.integer "cocktail_id"
-    t.string "keyword1"
-    t.string "keyword2"
     t.string "image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -71,7 +69,7 @@ ActiveRecord::Schema.define(version: 2018_11_13_144316) do
     t.string "first_name"
     t.string "last_name"
     t.string "username"
-    t.string "password"
+    t.string "password_digest"
     t.integer "age"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
