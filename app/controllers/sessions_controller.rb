@@ -10,7 +10,8 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       redirect_to posts_path
     else
-      redirect_to login_path
+      flash.notice = "No user found with that username/password combination"
+      render :new
     end
   end
 
