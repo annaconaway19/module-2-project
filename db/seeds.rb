@@ -26,7 +26,7 @@ post1 = Post.create!(user: User.all.sample, cocktail: Cocktail.all.sample, image
 
 post2 = Post.create(user: User.all.sample, cocktail: Cocktail.all.sample, image_url: 'https://www.saveur.com/sites/saveur.com/files/styles/1000_1x_/public/copper-king-6_2000x1500.jpg?itok=vMhh96oB&fc=50,50')
 
-post3 = Post.create(user_id: 3, cocktail_id: 3, image_url: "https://cdn.liquor.com/wp-content/uploads/2011/07/05125158/fa-Whiskey-Sour.jpg")
+post3 = Post.create(user: User.all.sample, cocktail: Cocktail.all.sample, image_url: "https://cdn.liquor.com/wp-content/uploads/2011/07/05125158/fa-Whiskey-Sour.jpg")
 
 drink_flavors = ["refreshing", "tart", "savory", "fruit", "strong", "spicy", "sweet", "fizzy", "licorice", "herbal", "vegetal", "bitter", "unusual", "floral", "smoky"]
 
@@ -55,13 +55,13 @@ cocktail_ing4 = CocktailIngredient.create(cocktail_id: 2, ingredient_id: 4)
 cocktail_ing5 = CocktailIngredient.create(cocktail_id: 2, ingredient_id: 5)
 cocktail_ing6 = CocktailIngredient.create(cocktail_id: 2, ingredient_id: 6)
 
-like1 = Like.create(post: Post.all.sample)
-like2 = Like.create(post: Post.all.sample)
-like3 = Like.create(post: Post.all.sample)
-like4 = Like.create(post: Post.all.sample)
-like5 = Like.create(post: Post.all.sample)
-like6 = Like.create(post: Post.all.sample)
-like7 = Like.create(post: Post.all.sample)
-like8 = Like.create(post: Post.all.sample)
-like9 = Like.create(post: Post.all.sample)
-like10 = Like.create(post: Post.all.sample)
+like1 = Like.create(post: Post.all.sample, user: User.all.sample)
+like2 = Like.create(post: Post.all.sample, user: User.all.sample)
+like3 = Like.create(post: Post.all.sample, user: User.all.sample)
+like4 = Like.create(post: Post.all.sample, user: User.all.sample)
+like5 = Like.create(post: Post.all.sample, user: User.all.sample)
+like6 = Like.create(post: Post.all.sample, user: User.all.sample)
+like7 = Like.create(post: Post.all.sample, user: User.all.sample)
+like8 = Like.create(post: Post.all.sample, user: User.all.sample)
+like9 = Like.create(post: Post.all.sample, user: User.all.sample)
+like10 = Like.create(post: Post.all.sample, user: User.all.sample)
