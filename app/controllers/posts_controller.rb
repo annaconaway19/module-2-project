@@ -7,17 +7,20 @@ class PostsController < ApplicationController
   def new
     #byebug
     @post = Post.new
+    @post.post_flavors.build
+    @post.post_flavors.build
   end
 
   def create
+    byebug
     @post = Post.create(post_params)
 
-    if @post.valid?
-      @post.save
+    # if @post.valid?
+    #   @post.save
       redirect_to post_path(@post)
-    else
-      render :new
-    end
+    # else
+    #   render :new
+    # end
   end
 
   def show
@@ -28,6 +31,9 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:user_id, :cocktail_id, :keyword1, :keyword2, :image_url)
+    params.require(:post).permit(:user_id, :cocktail_id, :image_url,
+      post_flavors_attributes: [
+        :post_id, :flavor_id
+        ])
   end
 end

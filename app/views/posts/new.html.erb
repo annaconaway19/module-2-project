@@ -2,12 +2,15 @@
 
 <%= form_for @post do |f| %>
 <%= f.label "Cocktail Name" %>
-<%= f.collection_select :cocktail_id, Cocktail.all, :id, :name %>
-<%= f.label :flavor %>
-<%= f.collection_select :flavor, Flavor.all, :id, :keyword1 %>
-<%= f.label :keyword2 %>
-<%= f.collection_select :flavor, Flavor.all, :id, :keyword2 %>
+  <%= f.collection_select :cocktail_id, Cocktail.all, :id, :name %>
+
+<%= f.fields_for :post_flavors do |flav| %>
+  <%= flav.hidden_field :post_id, :value => @post.id %>
+  <%= flav.label :keyword %>
+  <%= flav.collection_select :flavor_id, Flavor.all, :id, :keyword %>
+  <%end%>
+
 <%= f.label "Image URL" %>
-<%= f.text_field :image_url %>
+  <%= f.text_field :image_url %>
 <%= f.submit %>
 <%end%>

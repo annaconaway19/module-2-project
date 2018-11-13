@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :post_flavors
   resources :flavors
   # resources :cocktail_ingredients
   # resources :likes
