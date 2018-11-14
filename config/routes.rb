@@ -12,9 +12,12 @@ Rails.application.routes.draw do
 
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
-  delete '/logout', to: 'sessions#destroy'
+  delete'/logout', to: 'sessions#destroy', as: 'logout'
+  get '/users/new', to: 'users#new', as: 'signup'
   get '/users/:id/account', to: 'users#edit', as: 'account'
   patch '/users/:id', to: 'users#update'
   delete '/users/:id', to: 'users#destroy'
+
+  get "*path", to: 'application#redirect_bad_route'
 
 end
