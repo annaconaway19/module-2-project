@@ -1,8 +1,9 @@
+<%= render partial: "layouts/navbar" %>
+
 <% @posts.each do |post| %>
   <%= link_to post.cocktail.name, post %>
   <%= post.flavors[0].keyword %>
   <%= post.flavors[1].keyword %>
   <img src="<%= post.image_url %>">
   <%= render "likes/like_button" %>
-
 <% end %>

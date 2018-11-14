@@ -1,17 +1,21 @@
+<%= render partial: "layouts/navbar" %>
+
 <h1>Add a drink to my post page!</h1>
 
-<%= form_for @post do |f| %>
-<%= f.hidden_field :author_id, :value => session[:user_id] %>
-<%= f.label "Cocktail Name" %>
-  <%= f.collection_select :cocktail_id, Cocktail.all, :id, :name %>
+  <%= form_for @post do |f| %>
+  <%= f.hidden_field :author_id, :value => session[:user_id] %>
+  <%= f.label "Cocktail Name" %>
+    <%= f.collection_select :cocktail_id, Cocktail.all, :id, :name %>
 
-<%= f.fields_for :post_flavors do |flav| %>
-  <%= flav.hidden_field :post_id, :value => @post.id %>
-  <%= flav.label :keyword %>
-  <%= flav.collection_select :flavor_id, Flavor.all, :id, :keyword %>
-  <%end%>
+  <%= f.fields_for :post_flavors do |flav| %>
+    <%= flav.hidden_field :post_id, :value => @post.id %>
+    <%= flav.label :keyword %>
+    <%= flav.collection_select :flavor_id, Flavor.all, :id, :keyword %>
+    <%end%>
 
-<%= f.label "Image URL" %>
-  <%= f.text_field :image_url %>
-<%= f.submit %>
+  <%= f.label "Image URL" %>
+    <%= f.text_field :image_url %>
+  <%= f.submit %>
+
+
 <%end%>

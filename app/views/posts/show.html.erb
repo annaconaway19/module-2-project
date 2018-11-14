@@ -1,3 +1,5 @@
+<%= render partial: "layouts/navbar" %>
+
 <h1>More about <%= @post.cocktail.name %>:</h1>
 <h2>Favorited by <%= link_to @post.user.username, user_path(@post.user) %></h2>
     <img src="<%= @post.image_url %>" />
