@@ -1,4 +1,5 @@
 class Post < ApplicationRecord
+  acts_as_votable
   belongs_to :user, foreign_key: :author_id
   belongs_to :cocktail
   has_many :post_flavors
