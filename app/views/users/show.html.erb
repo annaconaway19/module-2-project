@@ -1,15 +1,14 @@
 <%= render partial: "layouts/navbar" %>
 
-<h1>Welcome <%= @user.first_name %></h1>
 
-<h2>Your Posts:</h2>
+<h2><%= @user.first_name %>'s Posts:</h2>
 <% @user.posts.each do |post| %>
-<%= post.cocktail.name %>
+<%= link_to post.cocktail.name, post %>
 <img src="<%= post.image_url %>" />
 <%end%>
 
 <h2>Posts You've Liked:</h2>
 <% @user.likes.each do |like| %>
-<%= like.post.cocktail.name %>
+<%= link_to like.post.cocktail.name, post_path(like.post) %>
 <img src="<%= like.post.image_url %>" />
 <%end%>
