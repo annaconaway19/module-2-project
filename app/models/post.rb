@@ -1,5 +1,5 @@
 class Post < ApplicationRecord
-  acts_as_votable
+
   belongs_to :user, foreign_key: :author_id
   belongs_to :cocktail
   has_many :post_flavors
@@ -7,6 +7,7 @@ class Post < ApplicationRecord
   has_many :likes
   has_many :users, through: :likes
   accepts_nested_attributes_for :post_flavors
+  acts_as_votable
 
   def self.filter(search_by, search_term)
     if search_term.empty?
