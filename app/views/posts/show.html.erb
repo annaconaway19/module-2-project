@@ -1,15 +1,16 @@
 <%= render partial: "layouts/navbar" %>
 
 <h1>More about <%= @post.cocktail.name %>:</h1>
-<p>Liked by <%= link_to @post.user.username, user_path(@post.user) %></p>
+  <div>
+    <%= @post.cocktail.description %>
+  </div>
     <img src="<%= @post.image_url %>" />
-    <div>
-      <%= @post.cocktail.description %>
-    </div>
+    <p>Liked by <%= link_to @post.user.username, user_path(@post.user) %></p>
 
     <div>
-      <% @post.cocktail.ingredients.each do |ingr| %>
-        <%= "#{ingr.name} - #{ingr.quantity}" %>
+      <ul>
+        <% @post.cocktail.ingredients.each do |ingr| %>
+            <li><%= "#{ingr.name} - #{ingr.quantity}" %></li>
+            <% end %>
+      </ul>
     </div>
-
-    <% end %>
