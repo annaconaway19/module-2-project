@@ -8,6 +8,7 @@ class UsersController < ApplicationController
 
     if @user.valid?
       @user.save
+      session[:user_id] = @user.id
       redirect_to account_path(@user)
     else
       render 'new'
@@ -36,6 +37,7 @@ class UsersController < ApplicationController
 
   def destroy
     User.find(params[:id]).destroy
+    session.clear
     redirect_to login_path
   end
 

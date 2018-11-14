@@ -1,7 +1,18 @@
 class PostsController < ApplicationController
 
   def index
-    @posts = Post.all
+    #byebug
+    if params[:cocktail_search]
+      @posts = Post.filter(params[:cocktail_search])
+    else
+      @posts = Post.all
+    end
+
+    if params[:sort_by]
+        @posts = @posts.organize(params[:sort_by])
+    else
+      @posts = @posts.organize('Newest Posts')
+    end
   end
 
   def new
@@ -30,7 +41,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:author_id, :cocktail_id, :image_url,
+    params.require(:post).permit(:cocktail_search, :sort_by, :author_id, :cocktail_id, :image_url,
       post_flavors_attributes: [
         :post_id, :flavor_id
         ])

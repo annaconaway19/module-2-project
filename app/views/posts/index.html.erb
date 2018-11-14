@@ -1,3 +1,11 @@
+<%= form_tag posts_path, method: :get do %>
+  <%= label_tag 'cocktail_search', 'Cocktail Search: ' %>
+  <%= select_tag 'cocktail_search', options_from_collection_for_select(Cocktail.all, :id, :name), include_blank: true %>
+  <%= label_tag 'sorty_by', 'Sorty By: ' %>
+  <%= select_tag 'sort_by', options_for_select([ 'Newest Posts', 'Oldest Posts', 'Most Likes', 'Least Likes' ], 'Newest Posts') %>
+  <%= submit_tag 'Search'%>
+<% end %>
+
 <% @posts.each do |post| %>
   <div style="border: 1px solid black; float: left">
     <h2><%= link_to post.cocktail.name, post %></h2>

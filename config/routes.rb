@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # resources :cocktail_ingredients
   # resources :likes
   resources :ingredients, only: [:index]
-  resources :cocktails, only: [:index]
+  resources :cocktails, only: [:index, :show]
   resources :posts, except: [:edit, :update, :delete]
   resources :users, only: [:new, :create, :show, :update, :destroy]
   resources :likes, only: [:create, :destroy]
