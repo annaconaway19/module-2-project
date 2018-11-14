@@ -2,8 +2,8 @@ class PostsController < ApplicationController
 
   def index
     #byebug
-    if params[:cocktail_search]
-      @posts = Post.filter(params[:cocktail_search])
+    if params[:search_term]
+      @posts = Post.filter(params[:search_by], params[:search_term])
     else
       @posts = Post.all
     end
@@ -41,7 +41,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:cocktail_search, :sort_by, :author_id, :cocktail_id, :image_url,
+    params.require(:post).permit(:search_by, :search_term, :sort_by, :author_id, :cocktail_id, :image_url,
       post_flavors_attributes: [
         :post_id, :flavor_id
         ])

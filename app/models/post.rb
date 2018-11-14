@@ -7,12 +7,22 @@ class Post < ApplicationRecord
   has_many :users, through: :likes
   accepts_nested_attributes_for :post_flavors
 
-  def self.filter(search)
-    if search.empty?
+  def self.filter(search_by, search_term)
+    if search_term.empty?
       return Post.all
     else
-      return Post.where(cocktail: Cocktail.find(search) )
+      case search_by
+        when 'Cocktail'
+          return Post.where( 'Cocktail.name = ?', search_term)
+        when 'Flavor'
+          return Post.where( 'flavor_id = ?', Flavor.find_by(keyword: search_term.downcase).id )
+      end
     end
+
+
+    # else
+    #   return Post.where('? = ?', search_by, search_term.downcase)
+    # end
   end
 
   def self.organize(order_by)

@@ -1,8 +1,22 @@
 <%= form_tag posts_path, method: :get do %>
-  <%= label_tag 'cocktail_search', 'Cocktail Search: ' %>
-  <%= select_tag 'cocktail_search', options_from_collection_for_select(Cocktail.all, :id, :name), include_blank: true %>
-  <%= label_tag 'sorty_by', 'Sorty By: ' %>
+  <%= label_tag 'search_by', 'Search By: ' %>
+  <%= select_tag 'search_by', options_for_select([ 'Cocktail', 'Flavor' ], 'Cocktail') %>
+
+
+  <%= label_tag 'search_term', 'Search: ' %>
+  <%= text_field_tag 'search_term', nil, list: "flavors_autocomplete" %>
+    <datalist id='flavors_autocomplete'>
+      <% Flavor.all.each do |flavor| %>
+        <option value="<%= flavor.keyword.capitalize %>"></option>
+      <% end %>
+    </datalist>
+
+
+
+
+  <%= label_tag 'sort_by', 'Sort By: ' %>
   <%= select_tag 'sort_by', options_for_select([ 'Newest Posts', 'Oldest Posts', 'Most Likes', 'Least Likes' ], 'Newest Posts') %>
+
   <%= submit_tag 'Search'%>
 <% end %>
 
@@ -16,4 +30,4 @@
     <div><%= post.likes.count %> LIKES</div>
     <%= render "likes/like_button" %>
   </div>
-<%end%>
+<% end %>
