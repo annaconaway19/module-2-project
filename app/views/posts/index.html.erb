@@ -1,9 +1,13 @@
 <%= render partial: "layouts/navbar" %>
 
 <% @posts.each do |post| %>
-  <%= link_to post.cocktail.name, post %>
-  <%= post.flavors[0].keyword %>
-  <%= post.flavors[1].keyword %>
-  <img src="<%= post.image_url %>">
-  <%= render "likes/like_button" %>
-<% end %>
+  <div style="border: 1px solid black; float: left">
+    <h2><%= link_to post.cocktail.name, post %></h2>
+    <h4><%= link_to post.user.username %></h4>
+    <img src="<%= post.image_url %>" style="width: 200px">
+    <h4><%= post.flavors[0].keyword %></h4>
+    <h4><%= post.flavors[1].keyword %></h4>
+    <div><%= post.likes.count %> LIKES</div>
+    <%= render "likes/like_button" %>
+  </div>
+<%end%>
