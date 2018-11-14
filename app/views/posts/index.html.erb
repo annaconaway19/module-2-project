@@ -1,13 +1,24 @@
 <%= render partial: "layouts/navbar" %>
 
-<% @posts.each do |post| %>
-  <div style="border: 1px solid black; float: left">
-    <h2><%= link_to post.cocktail.name, post %></h2>
-    <h4><%= link_to post.user.username %></h4>
-    <img src="<%= post.image_url %>" style="width: 200px">
-    <h4><%= post.flavors[0].keyword %></h4>
-    <h4><%= post.flavors[1].keyword %></h4>
-    <div><%= post.likes.count %> LIKES</div>
-    <%= render "likes/like_button" %>
-  </div>
-<%end%>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div class="post-index">
+      <link rel="stylesheet" href="app/assets/stylesheets/posts.scss">
+    <% @posts.each do |post| %>
+      <div style="border: 1px solid black; float: left">
+        <h2><%= link_to post.cocktail.name, post %></h2>
+        <img src="<%= post.image_url %>" style="width: 200px">
+        <h4><%= post.flavors[0].keyword %></h4>
+        <h4><%= post.flavors[1].keyword %></h4>
+        <div><%= post.likes.count %> LIKES</div>
+        <%= render "likes/like_button" %>
+      </div>
+    <%end%>
+    </div>
+  </body>
+</html>

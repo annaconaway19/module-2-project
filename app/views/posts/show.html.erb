@@ -1,25 +1,38 @@
 <%= render partial: "layouts/navbar" %>
 
-<h1>More about <%= @post.cocktail.name %>:</h1>
-  <div>
-    <%= @post.cocktail.description %>
-  </div>
-    <img src="<%= @post.image_url %>" />
-    <p>Liked by <%= link_to @post.user.username, user_path(@post.user) %></p>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Cocktail Details</title>
+  </head>
+      <body>
+    <div class="single-post">
+      <link rel="stylesheet" href="app/assets/stylesheets/posts.scss">
+        <h1>More about <%= @post.cocktail.name %>:</h1>
 
-    <div>
-      <ul>
-        <% @post.cocktail.ingredients.each do |ingr| %>
-            <li><%= "#{ingr.name} - #{ingr.quantity}" %></li>
-            <% end %>
-      </ul>
+        <div>
+          <h4><%= @post.flavors[0].keyword %></h4>
+          <h4><%= @post.flavors[1].keyword %></h4>
+        </div>
+
+          <div>
+            <%= @post.cocktail.description %>
+          </div>
+
+            <img src="<%= @post.image_url %>" />
+              <p>Liked by <%= link_to @post.user.username, user_path(@post.user) %></p>
+          <div>
+              <ul>
+                <% @post.cocktail.ingredients.each do |ingr| %>
+                    <li><%= "#{ingr.name} - #{ingr.quantity}" %></li>
+                    <% end %>
+              </ul>
+
+          <div><%= @post.likes.count %> LIKES</div>
+
+        </div>
     </div>
 
-    <div style="border: 1px solid black">
-      <h2><%= @post.cocktail.name %></h2>
-      <h4><%= @post.user.username %></h4>
-      <img src="<%= @post.image_url %>" />
-      <h4><%= @post.flavors[0].keyword %></h4>
-      <h4><%= @post.flavors[1].keyword %></h4>
-      <div><%= @post.likes.count %> LIKES</div>
-    </div>
+      </body>
+    </html>
