@@ -13,9 +13,11 @@ class Post < ApplicationRecord
     else
       case search_by
         when 'Cocktail'
-          return Post.where( 'Cocktail.name = ?', search_term)
+          cocktail = Cocktail.find_by(name: search_term)
+          return cocktail.posts
         when 'Flavor'
-          return Post.where( 'flavor_id = ?', Flavor.find_by(keyword: search_term.downcase).id )
+          flavor = Flavor.find_by(keyword: search_term.downcase)
+          return flavor.posts
       end
     end
 

@@ -18,9 +18,9 @@ Ingredient.destroy_all
 user1 = User.create(email: "abc123@gmail.com", first_name: "Anna", last_name: "Conaway", username: "annaconaway", password: "password", age: 27)
 user2 = User.create(email: "12345@gmail.com", first_name: "Jason", last_name: "Campbell", username: "jasoncampbell", password: "pw123", age: 32)
 
-cocktail1 = Cocktail.create(name: "Purple People Eater", description: "Fizzy and delish")
-cocktail2 = Cocktail.create(name: "Tequila Sunrise", description: "Fruity and strong")
-cocktail3 = Cocktail.create(name: "Whiskey Sour", description: "Strong and full o' whiskey")
+cocktail1 = Cocktail.create(name: "Purple People Eater".downcase, description: "Fizzy and delish")
+cocktail2 = Cocktail.create(name: "Tequila Sunrise".downcase, description: "Fruity and strong")
+cocktail3 = Cocktail.create(name: "Whiskey Sour".downcase, description: "Strong and full o' whiskey")
 
 
 drink_flavors = ["refreshing", "tart", "savory", "fruit", "strong", "spicy", "sweet", "fizzy", "licorice", "herbal", "vegetal", "bitter", "unusual", "floral", "smoky"]
@@ -60,10 +60,10 @@ cocktail_ing4 = CocktailIngredient.create(cocktail_id: 2, ingredient_id: 4)
 cocktail_ing5 = CocktailIngredient.create(cocktail_id: 2, ingredient_id: 5)
 cocktail_ing6 = CocktailIngredient.create(cocktail_id: 2, ingredient_id: 6)
 
-like1 = Like.create(post: Post.all.sample,
-  user: User.all.sample,
-  if Like.where()
-)
+# #like1 = Like.create(post: Post.all.sample,
+#   user: User.all.sample,
+#   if Like.where()
+# )
 like2 = Like.create(post: Post.all.sample, user: User.all.sample)
 like3 = Like.create(post: Post.all.sample, user: User.all.sample)
 like4 = Like.create(post: Post.all.sample, user: User.all.sample)
