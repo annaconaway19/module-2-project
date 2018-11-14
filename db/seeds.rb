@@ -18,21 +18,21 @@ Ingredient.destroy_all
 user1 = User.create(email: "abc123@gmail.com", first_name: "Anna", last_name: "Conaway", username: "annaconaway", password: "password", age: 27)
 user2 = User.create(email: "12345@gmail.com", first_name: "Jason", last_name: "Campbell", username: "jasoncampbell", password: "pw123", age: 32)
 
-cocktail1 = Cocktail.create(name: "Purple People Eater", description: "Perfect, purple accompaniment to any dish")
-cocktail2 = Cocktail.create(name: "Tequila Sunrise", description: "1 tequila, 2 tequila, 3 tequila, floor (as they say)")
-cocktail3 = Cocktail.create(name: "Whiskey Sour", description: "Strong and full o' whiskey")
-cocktail4 = Cocktail.create(name: "Bloody Mary", description: "Vodka. It's for breakfast.")
-cocktail5 = Cocktail.create(name: "Git & Tonic", description: "For when you want to get turnt without the calories")
-cocktail6 = Cocktail.create(name: "Dirty Martini", description: "Extra olives, please!")
-cocktail7 = Cocktail.create(name: "Long Island", description: "Little bit of everything")
-cocktail8 = Cocktail.create(name: "Flatiron Fog", description: "For a day when you've had one too many labs")
-cocktail9 = Cocktail.create(name: "404", description: "No error here. You picked a good one.")
-cocktail10 = Cocktail.create(name: "Ruby on the Rocks", description: "Rails can only offer so much")
-cocktail11 = Cocktail.create(name: "Jack & Code", description: "The classic you're thinking of, with a new name")
-cocktail12 = Cocktail.create(name: "WeWorkWhiskey", description: "Do (or drink) what you love")
-cocktail13 = Cocktail.create(name: "The Paul", description: "Guaranteed sass with every glass")
-cocktail14 = Cocktail.create(name: "Mod Margarita", description: "May or may not give you the confidence for your next code challenge")
-cocktail15 = Cocktail.create(name: "Code Fashioned", description: "The most abstract of cocktails")
+cocktail1 = Cocktail.create(name: "Purple People Eater".downcase, description: "Perfect, purple accompaniment to any dish")
+cocktail2 = Cocktail.create(name: "Tequila Sunrise".downcase, description: "1 tequila, 2 tequila, 3 tequila, floor (as they say)")
+cocktail3 = Cocktail.create(name: "Whiskey Sour".downcase, description: "Strong and full o' whiskey")
+cocktail4 = Cocktail.create(name: "Bloody Mary".downcase, description: "Vodka. It's for breakfast.")
+cocktail5 = Cocktail.create(name: "Git & Tonic".downcase, description: "For when you want to get turnt without the calories")
+cocktail6 = Cocktail.create(name: "Dirty Martini".downcase, description: "Extra olives, please!")
+cocktail7 = Cocktail.create(name: "Long Island".downcase, description: "Little bit of everything")
+cocktail8 = Cocktail.create(name: "Flatiron Fog".downcase, description: "For a day when you've had one too many labs")
+cocktail9 = Cocktail.create(name: "404".downcase, description: "No error here. You picked a good one.")
+cocktail10 = Cocktail.create(name: "Ruby on the Rocks".downcase, description: "Rails can only offer so much")
+cocktail11 = Cocktail.create(name: "Jack & Code".downcase, description: "The classic you're thinking of, with a new name")
+cocktail12 = Cocktail.create(name: "WeWorkWhiskey".downcase, description: "Do (or drink) what you love")
+cocktail13 = Cocktail.create(name: "The Paul".downcase, description: "Guaranteed sass with every glass")
+cocktail14 = Cocktail.create(name: "Mod Margarita".downcase, description: "May or may not give you the confidence for your next code challenge")
+cocktail15 = Cocktail.create(name: "Code Fashioned".downcase, description: "The most abstract of cocktails")
 
 
 drink_flavors = ["refreshing", "tart", "savory", "fruit", "strong", "spicy", "sweet", "fizzy", "licorice", "herbal", "vegetal", "bitter", "unusual", "floral", "smoky"]
@@ -124,10 +124,10 @@ cocktail_ing36 = CocktailIngredient.create(cocktail_id: 15, ingredient_id: 14)
 
 
 
-like1 = Like.create(post: Post.all.sample,
-  user: User.all.sample,
-  if Like.where()
-)
+# #like1 = Like.create(post: Post.all.sample,
+#   user: User.all.sample,
+#   if Like.where()
+# )
 like2 = Like.create(post: Post.all.sample, user: User.all.sample)
 like3 = Like.create(post: Post.all.sample, user: User.all.sample)
 like4 = Like.create(post: Post.all.sample, user: User.all.sample)

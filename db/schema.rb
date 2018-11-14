@@ -28,10 +28,8 @@ ActiveRecord::Schema.define(version: 2018_11_13_144316) do
 
   create_table "flavors", force: :cascade do |t|
     t.string "keyword"
-    t.integer "post_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["post_id"], name: "index_flavors_on_post_id"
   end
 
   create_table "ingredients", force: :cascade do |t|

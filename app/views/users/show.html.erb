@@ -10,6 +10,7 @@
     <h4><%= post.flavors[0].keyword %></h4>
     <h4><%= post.flavors[1].keyword %></h4>
     <div><%= post.likes.count %> LIKES</div>
+    <%= render "likes/like_button" %>
   </div>
 <%end%>
 
@@ -22,5 +23,6 @@
     <h4><%= like.post.flavors[0].keyword %></h4>
     <h4><%= like.post.flavors[1].keyword %></h4>
     <div><%= like.post.likes.count %> LIKES</div>
+    <%= render "likes/like_button" %>
   </div>
 <%end%>
