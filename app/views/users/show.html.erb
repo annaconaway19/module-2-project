@@ -1,26 +1,39 @@
 <%= render partial: "layouts/navbar" %>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>My Drinks</title>
+  </head>
+  <body>
+    <h2><%= @user.first_name %>'s Posts:</h2>
 
+    <div class="user-posts">
+        <% @user.posts.each do |post| %>
+          <div style="border: 1px solid black; float: left">
+            <h2><%= link_to post.cocktail.name, post %></h2>
+            <p>Posted by: <%= post.user.username %></p>
+            <img src="<%= post.image_url %>" style="width: 200px" />
+            <h4><%= post.flavors[0].keyword %></h4>
+            <h4><%= post.flavors[1].keyword %></h4>
+            <div><%= post.likes.count %> LIKES</div>
+          </div>
+        <%end%>
+      </div>
+      
+        <h2>Posts You've Liked:</h2>
 
-<h2><%= @user.first_name %>'s Posts:</h2>
-<% @user.posts.each do |post| %>
-  <div style="border: 1px solid black; float: left">
-    <h2><%= post.cocktail.name %></h2>
-    <h4><%= post.user.username %></h4>
-    <img src="<%= post.image_url %>" style="width: 200px" />
-    <h4><%= post.flavors[0].keyword %></h4>
-    <h4><%= post.flavors[1].keyword %></h4>
-    <div><%= post.likes.count %> LIKES</div>
-  </div>
-<%end%>
-
-<h2>Posts You've Liked:</h2>
-<% @user.likes.each do |like| %>
-  <div style="border: 1px solid black; float: left">
-    <h2><%= like.post.cocktail.name %></h2>
-    <h4><%= like.post.user.username %></h4>
-    <img src="<%= like.post.image_url %>" style="width: 200px" />
-    <h4><%= like.post.flavors[0].keyword %></h4>
-    <h4><%= like.post.flavors[1].keyword %></h4>
-    <div><%= like.post.likes.count %> LIKES</div>
-  </div>
-<%end%>
+        <div class="user-posts">
+          <% @user.likes.each do |like| %>
+          <div style="border: 1px solid black; float: left">
+            <h2><%= link_to like.post.cocktail.name, post_path(like.post) %></h2>
+            <p>Posted by: <%= like.post.user.username %></p>
+            <img src="<%= like.post.image_url %>" style="width: 200px" />
+            <h4><%= like.post.flavors[0].keyword %></h4>
+            <h4><%= like.post.flavors[1].keyword %></h4>
+            <div><%= like.post.likes.count %> LIKES</div>
+          </div>
+        <%end%>
+    </div>
+  </body>
+</html>
