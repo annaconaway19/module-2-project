@@ -27,12 +27,12 @@
         <img src="<%= post.image_url %>" style="width: 200px">
         <h4><%= post.flavors[0].keyword %></h4>
         <h4><%= post.flavors[1].keyword %></h4>
-            <%= link_to like_post_path(post), method: :put do %>
+              <%= link_to like_post_path(post), method: :put do %>
                 Like
-            <%= post.get_upvotes.size %>
+            <%= post.get_likes.size %>
             <%= link_to dislike_post_path(post), method: :put do %>
                 Unlike
-              <%= post.get_downvotes.size %>
+              <%= post.get_dislikes.size %>
           </div>
           <% end %>
       <% end %>

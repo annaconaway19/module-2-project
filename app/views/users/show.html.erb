@@ -17,10 +17,32 @@
             <h4><%= post.flavors[0].keyword %></h4>
             <h4><%= post.flavors[1].keyword %></h4>
           </div>
-        <%end%>
+          <%= link_to like_post_path(post), method: :put do %>
+            Like
+        <%= post.get_upvotes.size %>
+        <%= link_to dislike_post_path(post), method: :put do %>
+            Unlike
+          <%= post.get_downvotes.size %>
       </div>
+        <%end%>
+      <% end %>
+  <% end %>
 
-        <h2>Posts You've Liked:</h2>
+
+    <div class="user-posts">
+      <h2>Posts You've Liked:</h2>
+      <% @user.posts.each do |post| %>
+        <% if @post.vote_by @user %>
+        <div style="border: 1px solid black; float: left">
+          <h2><%= link_to post.cocktail.name, post %></h2>
+          <p>Posted by: <%= post.user.username %></p>
+          <img src="<%= post.image_url %>" style="width: 200px" />
+          <h4><%= post.flavors[0].keyword %></h4>
+          <h4><%= post.flavors[1].keyword %></h4>
+        </div>
+      <%end%>
+    </div>
+    <% end %>
 
 
   </body>
