@@ -2,12 +2,24 @@
 
 <h2>Your Posts:</h2>
 <% @user.posts.each do |post| %>
-<%= post.cocktail.name %>
-<img src="<%= post.image_url %>" />
+  <div style="border: 1px solid black; float: left">
+    <h2><%= post.cocktail.name %></h2>
+    <h4><%= post.user.username %></h4>
+    <img src="<%= post.image_url %>" style="width: 200px" />
+    <h4><%= post.flavors[0].keyword %></h4>
+    <h4><%= post.flavors[1].keyword %></h4>
+    <div><%= post.likes.count %> LIKES</div>
+  </div>
 <%end%>
 
 <h2>Posts You've Liked:</h2>
 <% @user.likes.each do |like| %>
-<%= like.post.cocktail.name %>
-<img src="<%= like.post.image_url %>" />
+  <div style="border: 1px solid black; float: left">
+    <h2><%= like.post.cocktail.name %></h2>
+    <h4><%= like.post.user.username %></h4>
+    <img src="<%= like.post.image_url %>" style="width: 200px" />
+    <h4><%= like.post.flavors[0].keyword %></h4>
+    <h4><%= like.post.flavors[1].keyword %></h4>
+    <div><%= like.post.likes.count %> LIKES</div>
+  </div>
 <%end%>
