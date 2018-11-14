@@ -1,14 +1,26 @@
 <%= render partial: "layouts/navbar" %>
 
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    <div class="post-index">
-      <link rel="stylesheet" href="app/assets/stylesheets/posts.scss">
+<body>
+  <div class="post-index">
+    <link rel="stylesheet" href="app/assets/stylesheets/posts.scss">
+    <%= form_tag posts_path, method: :get do %>
+      <%= label_tag 'search_by', 'Search By: ' %>
+      <%= select_tag 'search_by', options_for_select([ 'Cocktail', 'Flavor' ], 'Cocktail') %>
+
+      <%= label_tag 'search_term', 'Search: ' %>
+      <%= text_field_tag 'search_term', nil, list: "flavors_autocomplete" %>
+        <datalist id='flavors_autocomplete'>
+          <% Flavor.all.each do |flavor| %>
+            <option value="<%= flavor.keyword.capitalize %>"></option>
+          <% end %>
+        </datalist>
+
+      <%= label_tag 'sort_by', 'Sort By: ' %>
+      <%= select_tag 'sort_by', options_for_select([ 'Newest Posts', 'Oldest Posts', 'Most Likes', 'Least Likes' ], 'Newest Posts') %>
+
+      <%= submit_tag 'Search'%>
+    <% end %>
+
     <% @posts.each do |post| %>
       <div style="border: 1px solid black; float: left">
         <h2><%= link_to post.cocktail.name, post %></h2>
@@ -18,7 +30,8 @@
         <div><%= post.likes.count %> LIKES</div>
         <%= render "likes/like_button" %>
       </div>
-    <%end%>
+    <% end %>
+    
     </div>
   </body>
 </html>

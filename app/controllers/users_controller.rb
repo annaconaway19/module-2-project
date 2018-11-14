@@ -34,10 +34,11 @@ class UsersController < ApplicationController
       end
     end
 
-    def destroy
-      User.find(params[:id]).destroy
-      redirect_to login_path
-    end
+  def destroy
+    User.find(params[:id]).destroy
+    session.clear
+    redirect_to login_path
+  end
 
   private
 
