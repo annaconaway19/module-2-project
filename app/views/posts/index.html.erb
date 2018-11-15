@@ -9,10 +9,12 @@
 
       <%= label_tag 'search_term', 'Search: ' %>
       <%= text_field_tag 'search_term', nil, list: "flavors_autocomplete" %>
+
         <datalist id='flavors_autocomplete'>
           <% Flavor.all.each do |flavor| %>
             <option value="<%= flavor.keyword.capitalize %>"></option>
           <% end %>
+
         </datalist>
 
       <%= label_tag 'sort_by', 'Sort By: ' %>
@@ -27,16 +29,16 @@
         <img src="<%= post.image_url %>" style="width: 200px">
         <h4><%= post.flavors[0].keyword %></h4>
         <h4><%= post.flavors[1].keyword %></h4>
-              <%= link_to like_post_path(post), method: :put do %>
-                Like
-            <%= post.get_likes.size %>
-            <%= link_to dislike_post_path(post), method: :put do %>
-                Unlike
-              <%= post.get_dislikes.size %>
+        <p><%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+            <% pre_like = post.likes.find { |like| like.liker_id == current_user.id} %>
+              <% if pre_like %>
+            <%= button_to 'Unlike', post_like_path(post, pre_like), method: :delete %>
+              <% else %>
+            <%= button_to 'Like', post_likes_path(post), method: :post %>
+              <% end %>
+            <%end%>
           </div>
-          <% end %>
-      <% end %>
-    <% end %>
+
 
     </div>
 

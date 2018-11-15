@@ -23,30 +23,18 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.create!(post_params)
+    @post = Post.create(post_params)
 
-    # if @post.valid?
-    #   @post.save
+    if @post.valid?
+      @post.save
       redirect_to post_path(@post)
-    # else
-    #   render :new
-    # end
+    else
+      render :new
+    end
   end
 
   def show
     @post = Post.find(params[:id])
-  end
-
-  def upvote
-    @post = Post.find(params[:id])
-    @post.upvote_by current_user
-    redirect_to posts
-  end
-
-  def downvote
-    @post = Post.find(params[:id])
-    @post.downvote_by current_user
-    redirect_to posts_path
   end
 
 

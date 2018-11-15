@@ -4,10 +4,10 @@ class Post < ApplicationRecord
   belongs_to :cocktail
   has_many :post_flavors
   has_many :flavors, through: :post_flavors
-  has_many :likes
-  has_many :users, through: :likes
+  has_many :likes, dependent: :destroy
+  # has_many :users, through: :likes
   accepts_nested_attributes_for :post_flavors
-  acts_as_votable
+  # acts_as_votable
 
   def self.filter(search_by, search_term)
     if search_term.empty?
@@ -24,9 +24,6 @@ class Post < ApplicationRecord
     end
 
 
-    # else
-    #   return Post.where('? = ?', search_by, search_term.downcase)
-    # end
   end
 
   def self.organize(order_by)
@@ -41,4 +38,6 @@ class Post < ApplicationRecord
         Post.all.sort_by { |post| post.likes.count }
       end
   end
+
+
 end
