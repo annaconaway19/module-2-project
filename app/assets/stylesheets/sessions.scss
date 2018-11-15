@@ -7,37 +7,28 @@
 //   overflow: auto;
 // }
 
-// body {
-//
-//     background-image: url("https://images.pexels.com/photos/1283219/pexels-photo-1283219.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
-//
-//     /* Full height */
-//     height: 100%;
-//
-//     /* Center and scale the image nicely */
-//     background-position: center;
-//     background-repeat: no-repeat;
-//     background-size: cover;
-//     margin: auto;
-//     display: table;
-//     width: 100%;
-//     font-family: 'Syndicate,' sans-serif;
-//
-// }
+.homepage {
+    background-image: url("https://images.pexels.com/photos/1283219/pexels-photo-1283219.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: auto;
+    width: 100%;
+}
 
 .login {
    // margin: 20px auto;
    // max-width: 300px;
    padding: 16px;
-   margin: 20;
+   margin: 20px;
    position: absolute;
    top: 50%;
    left: 50%;
    -ms-transform: translate(-50%, -50%);
    transform: translate(-50%, -50%);
-   background:rgba(0,0,0,0.5);
+   background:rgba(0,0,0,0.75);
    text-align: center;
    color: white;
+   
    // max-height: 250px;
    // margin: auto;
 

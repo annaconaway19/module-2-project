@@ -1,48 +1,57 @@
-<%= render partial: "layouts/navbar" %>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<link rel="stylesheet" href="app/assets/stylesheets/posts.scss">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <%= render partial: "layouts/navbar" %>
 
-<body>
-  <div class="post-index">
-    <link rel="stylesheet" href="app/assets/stylesheets/posts.scss">
-    <%= form_tag posts_path, method: :get do %>
-      <%= label_tag 'search_by', 'Search By: ' %>
-      <%= select_tag 'search_by', options_for_select([ 'Cocktail', 'Flavor' ], 'Cocktail') %>
+    <div class="search_bar">
+      <%= form_tag posts_path, method: :get do %>
+        <%= label_tag 'search_by', 'Search By: ' %>
+        <%= select_tag 'search_by', options_for_select([ 'Cocktail', 'Flavor' ], 'Cocktail') %>
 
-      <%= label_tag 'search_term', 'Search: ' %>
-      <%= text_field_tag 'search_term', nil, list: "flavors_autocomplete" %>
+        <%= label_tag 'search_term', 'Search: ' %>
+        <%= text_field_tag 'search_term', nil, list: "flavors_autocomplete" %>
 
-        <datalist id='flavors_autocomplete'>
-          <% Flavor.all.each do |flavor| %>
-            <option value="<%= flavor.keyword.capitalize %>"></option>
-          <% end %>
-          <% Cocktail.all.each do |ct| %>
-            <option value="<%= ct.name.split.map(&:capitalize).join(' ') %>"></option>
-          <% end %>
-        </datalist>
+          <datalist id='flavors_autocomplete'>
+            <% Flavor.all.each do |flavor| %>
+              <option value="<%= flavor.keyword.capitalize %>"></option>
+            <% end %>
+            <% Cocktail.all.each do |ct| %>
+              <option value="<%= ct.name.split.map(&:capitalize).join(' ') %>"></option>
+            <% end %>
+          </datalist>
 
-      <%= label_tag 'sort_by', 'Sort By: ' %>
-      <%= select_tag 'sort_by', options_for_select([ 'Newest Posts', 'Oldest Posts', 'Most Likes', 'Least Likes' ], 'Newest Posts') %>
+        <%= label_tag 'sort_by', 'Sort By: ' %>
+        <%= select_tag 'sort_by', options_for_select([ 'Newest Posts', 'Oldest Posts', 'Most Likes', 'Least Likes' ], 'Newest Posts') %>
 
-      <%= submit_tag 'Search'%>
-    <% end %>
-
-    <% @posts.each do |post| %>
-      <div style="border: 1px solid black; float: left">
-        <h2><%= link_to post.cocktail.name, post %></h2>
-        <img src="<%= post.image_url %>" style="width: 200px">
-        <h4><%= post.flavors[0].keyword %></h4>
-        <h4><%= post.flavors[1].keyword %></h4>
-        <p><%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
-            <% pre_like = post.likes.find { |like| like.liker_id == current_user.id} %>
-              <% if pre_like %>
-            <%= button_to 'Unlike', post_like_path(post, pre_like), method: :delete %>
-              <% else %>
-            <%= button_to 'Like', post_likes_path(post), method: :post %>
-              <% end %>
-            <%end%>
-          </div>
+        <%= submit_tag 'Search'%>
+      <% end %>
+      </div>
 
 
-    </div>
+      <% @posts.each_slice(3) do |posts| %>
+      <div class="row">
+        <% posts.each do |post| %>
+          <div class="col-lg-3 post-index">
+            <h2><%= link_to post.cocktail.name, post %></h2>
+            <img src="<%= post.image_url %>" style="width: 200px">
+            <h4><%= post.flavors[0].keyword %></h4>
+            <h4><%= post.flavors[1].keyword %></h4>
+            <p><%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+                <% pre_like = post.likes.find { |like| like.liker_id == current_user.id} %>
+                  <% if pre_like %>
+                <%= button_to 'Unlike', post_like_path(post, pre_like), method: :delete %>
+                  <% else %>
+                <%= button_to 'Like', post_likes_path(post), method: :post %>
+                  <% end %>
+                </div>
+          <%end%>
 
-  </body>
+        </div>
+  <%end %>
+    </body>
 </html>
