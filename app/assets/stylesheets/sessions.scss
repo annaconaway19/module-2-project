@@ -7,7 +7,30 @@
 //   overflow: auto;
 // }
 
+body, html {
+
+    background-image: url("https://images.pexels.com/photos/1283219/pexels-photo-1283219.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+
+    /* Full height */
+    height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: auto;
+    display: table;
+    width: 100%;
+
+}
+
 .login {
-  text-align: center;
-  font-family: 'Syndicate', sans-serif;
+ margin: 20px;
+ max-width: 300px;
+ padding: 16px;
+ background:rgba(0,0,0,0.5);
+ text-align: center;
+ color: white;
+ font-family: 'Syndicate,' sans-serif;
+ vertical-align: middle;
 }

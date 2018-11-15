@@ -1,25 +1,32 @@
-<div class="wrapper">
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Bartender's Choice</title>
+  </head>
+  <body>
 
-<div class="login">
-  <link rel="stylesheet" href="app/assets/stylesheets/sessions.scss">
+    <div align='center' class="login">
+      <link rel="stylesheet" href="app/assets/stylesheets/sessions.scss">
+      <link href="https://fonts.googleapis.com/css?family=Syncopate" rel="stylesheet">
 
-  <link href="https://fonts.googleapis.com/css?family=Syncopate" rel="stylesheet">
+      <h1>Bartender's Choice</h1>
 
-  <h1>Bartender's Choice</h1>
+        <div class="error"> <%= flash.notice %></div>
 
-    <div class="error"> <%= flash.notice %></div>
+          <%= form_tag '/login' do %>
+            <%= label :username, 'Username: ' %>
+            <br><%= text_field_tag :username %></br>
 
-      <%= form_tag '/login' do %>
-        <%= label :username, 'Username: ' %>
-        <br><%= text_field_tag :username %></br>
+            <%= label :password, 'Password: ' %>
+            <br><%= password_field_tag :password %></br>
+            <br><%= submit_tag 'Login' %></br>
+          <% end %>
 
-        <%= label :password, 'Password: ' %>
-        <br><%= password_field_tag :password %></br>
-        <br><%= submit_tag 'Login' %></br>
-      <% end %>
+        <%= link_to 'Sign Up!', new_user_path %>
 
-    <%= link_to 'Sign Up!', new_user_path %>
+      </div>
 
-  </div>
 
-</div>
+  </body>
+</html>
