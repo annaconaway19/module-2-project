@@ -11,7 +11,6 @@
 
     <div class="user-posts">
         <% @user.posts.each do |post| %>
-          <div style="border: 1px solid black; float: left">
             <h2><%= link_to post.cocktail.name, post %></h2>
             <p>Posted by: <%= post.user.username %></p>
             <img src="<%= post.image_url %>" style="width: 200px" />
@@ -20,14 +19,12 @@
 
           </div>
 
-      </div>
         <%end%>
 
 
     <h2> Drinks I Like:</h2>
     <div class="user-posts">
           <% @user.likes.each do |like| %>
-          <div style="border: 1px solid black; float: left">
             <h2><%= link_to like.post.cocktail.name, post_path(like.post) %></h2>
             <p>Posted by: <%= like.post.user.username %></p>
             <img src="<%= like.post.image_url %>" style="width: 200px" />
