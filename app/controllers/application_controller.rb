@@ -19,8 +19,8 @@ class ApplicationController < ActionController::Base
 
     def authorized_for_user(user)
       authorized
-      if current_user != user
-        redirect_to current_user
+      if current_user && current_user != user
+        redirect_to posts_path
       end
     end
 

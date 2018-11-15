@@ -7,7 +7,7 @@ class User < ApplicationRecord
 
   has_secure_password
   validates :username, uniqueness: true
-  validates :age, numericality: { minimum: 21 }
+  validates :age, numericality: { greater_than_or_equal_to: 21 }
 
     #
     #   # creates a new like row with post_id and user_id
