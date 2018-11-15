@@ -10,10 +10,10 @@ class Post < ApplicationRecord
   acts_as_votable
   mount_uploader :image, ImageUploader
   validates :image, presence: true
-  #validate :different_flavors?
+  validate :different_flavors?
 
   def different_flavors?
-    errors.add(:post_flavors, "Keywords cannot be the same") unless self.post_flavors[0].flavor.keyword != self.post_flavors[1].flavor.keyword
+    errors.add(:keywords, "cannot be the same") unless self.post_flavors[0].flavor.keyword != self.post_flavors[1].flavor.keyword
   end
 
   def self.filter(search_by, search_term)
@@ -22,11 +22,17 @@ class Post < ApplicationRecord
     else
       case search_by
         when 'Cocktail'
-          cocktail = Cocktail.find_by(name: search_term)
-          return cocktail.posts
+          if cocktail = Cocktail.find_by(name: search_term.downcase)
+            return cocktail.posts
+          else
+            return []
+          end
         when 'Flavor'
-          flavor = Flavor.find_by(keyword: search_term.downcase)
-          return flavor.posts
+          if flavor = Flavor.find_by(keyword: search_term.downcase)
+            return flavor.posts
+          else
+            return []
+          end
       end
     end
 
