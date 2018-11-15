@@ -4,8 +4,8 @@ class Post < ApplicationRecord
   belongs_to :cocktail
   has_many :post_flavors
   has_many :flavors, through: :post_flavors
-  has_many :likes
-  has_many :users, through: :likes
+  has_many :likes, dependent: :destroy
+  # has_many :users, through: :likes
   accepts_nested_attributes_for :post_flavors
   acts_as_votable
   mount_uploader :image, ImageUploader
@@ -31,9 +31,6 @@ class Post < ApplicationRecord
     end
 
 
-    # else
-    #   return Post.where('? = ?', search_by, search_term.downcase)
-    # end
   end
 
   def self.organize(order_by)

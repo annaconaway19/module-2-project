@@ -1,7 +1,7 @@
 class User < ApplicationRecord
-  acts_as_voter
+  # acts_as_voter
   has_many :posts, foreign_key: :author_id
-  has_many :likes
+  has_many :likes, dependent: :destroy
   has_many :likes, foreign_key: :liker_id
   has_many :cocktails, through: :posts
 
@@ -27,5 +27,6 @@ class User < ApplicationRecord
     # end
     #
     #
+
 
 end
