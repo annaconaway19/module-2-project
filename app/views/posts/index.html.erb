@@ -14,7 +14,9 @@
           <% Flavor.all.each do |flavor| %>
             <option value="<%= flavor.keyword.capitalize %>"></option>
           <% end %>
-
+          <% Cocktail.all.each do |ct| %>
+            <option value="<%= ct.name.split.map(&:capitalize).join(' ') %>"></option>
+          <% end %>
         </datalist>
 
       <%= label_tag 'sort_by', 'Sort By: ' %>
