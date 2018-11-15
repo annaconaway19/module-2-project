@@ -61,5 +61,8 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-#Adds likes functionality
+# Adds likes functionality
 gem 'acts_as_votable', '~> 0.12.0'
+
+# Adds image upload functionality
+gem 'carrierwave', '~> 1.0'

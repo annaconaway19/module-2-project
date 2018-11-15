@@ -2,6 +2,21 @@
 
 <h1>Add a drink to my post page!</h1>
 
+<% if @post.errors.any? %>
+  <div id="error_explanation">
+    <h4>
+      <%= pluralize(@post.errors.count, "error") %>
+      prohibited this article from being saved:
+    </h4>
+
+    <ul>
+    <% @post.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
   <%= form_for @post do |f| %>
   <%= f.hidden_field :author_id, :value => session[:user_id] %>
   <%= f.label "Cocktail Name" %>
@@ -13,9 +28,9 @@
     <%= flav.collection_select :flavor_id, Flavor.all, :id, :keyword %>
     <%end%>
 
-  <%= f.label "Image URL" %>
-    <%= f.text_field :image_url %>
-  <%= f.submit %>
+  <%= f.label :image %>
+  <%= f.file_field :image %>
 
+  <%= f.submit %>
 
 <%end%>
