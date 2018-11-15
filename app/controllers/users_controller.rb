@@ -25,7 +25,7 @@ class UsersController < ApplicationController
     end
 
     def update
-      @user.update(user_params)
+      @user.update!(user_params)
 
       if @user.valid?
         @user.save
