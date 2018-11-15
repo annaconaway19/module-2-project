@@ -8,10 +8,12 @@ class PostsController < ApplicationController
       @posts = Post.all
     end
 
-    if params[:sort_by]
+    if !@posts.empty?
+      if params[:sort_by]
         @posts = @posts.organize(params[:sort_by])
-    else
-      @posts = @posts.organize('Newest Posts')
+      else
+        @posts = @posts.organize('Newest Posts')
+      end
     end
   end
 
