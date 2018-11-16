@@ -14,8 +14,15 @@
  *= require_self
  */
 
- h1 {
+
+ h1, h2, h3, h4 {
    padding: 20px;
    top: 10px;
    text-align: center;
+   font-family: sans-serif;
  }
+
+
+.navbar {
+  font-size: 25px;
+}

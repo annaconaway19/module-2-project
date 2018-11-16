@@ -22,6 +22,7 @@ class PostsController < ApplicationController
     @post = Post.new(author_id: session[:user_id])
     @post.post_flavors.build
     @post.post_flavors.build
+
   end
 
   def create
@@ -39,17 +40,6 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
   end
 
-  def upvote
-    @post = Post.find(params[:id])
-    @post.upvote_by current_user
-    redirect_to posts_path
-  end
-
-  def downvote
-    @post = Post.find(params[:id])
-    @post.downvote_by current_user
-    redirect_to posts_path
-  end
 
 
   private
@@ -58,6 +48,7 @@ class PostsController < ApplicationController
     params.require(:post).permit(:search_by, :search_term, :sort_by, :author_id, :cocktail_id, :image,
       post_flavors_attributes: [
         :post_id, :flavor_id
-        ])
-  end
+        ]
+      )  
+    end
 end
