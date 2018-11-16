@@ -9,10 +9,11 @@
   <body>
     <div class="single-post">
 
-      <h1>More about
-        <%= @post.cocktail.name %>:</h1>
+      <h1>
+        <%= @post.cocktail.name.capitalize %></h1>
 
-      <div>
+
+      <div class="flavors">Key Flavor Attributes:
         <h4><%= @post.flavors[0].keyword %></h4>
         <h4><%= @post.flavors[1].keyword %></h4>
       </div>
@@ -30,7 +31,7 @@
             <li style="list-style-type: none"><%= "#{ingr.name} - #{ingr.quantity}" %></li>
           <% end %>
         </ul>
-        <p><%= (@post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+        <p><%= @post.likes.count%> likes</p>
 
         <% pre_like = @post.likes.find { |like| like.liker_id == current_user.id} %>
         <% if pre_like %>

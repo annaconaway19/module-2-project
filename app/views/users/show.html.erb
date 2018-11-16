@@ -21,12 +21,17 @@
             <img src="<%= post.image_url %>" style="width: 200px" />
             <h4><%= post.flavors[0].keyword %></h4>
             <h4><%= post.flavors[1].keyword %></h4>
+            <div><%= post.likes.count %> LIKES</div>
+            <% if post.likes.count > 1 %>
+            <%= button_to 'Unlike', post_likes_path(post), method: :delete %>
+          <% else %>
+            <%= button_to 'Like', post_likes_path(post) %>
+
+          <% end %>
           </div>
         <%end%>
         </div>
         <%end%>
-
-
 
 
     <h1> Drinks I Like:</h1>
@@ -41,6 +46,12 @@
             <h4><%= like.post.flavors[0].keyword %></h4>
             <h4><%= like.post.flavors[1].keyword %></h4>
             <div><%= like.post.likes.count %> LIKES</div>
+            <% if like.post.likes.count > 1 %>
+            <%= button_to 'Unlike', post_path, method: :delete %>
+          <% else %>
+            <%= button_to 'Like', post_path %>
+
+          <% end %>
           </div>
         <%end%>
         </div>
