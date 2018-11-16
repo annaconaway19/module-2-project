@@ -1,57 +1,59 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
-  <head>
-    <meta charset="utf-8">
-    <title>New User</title>
-  </head>
-<div class="new-user">
-  <link rel="stylesheet" href="app/assets/stylesheets/users.scss">
+      <link rel="stylesheet" href="app/assets/stylesheets/users.scss">
+      <link rel="stylesheet" href="app/assets/stylesheets/sessions.scss">
 
-  <body>
-    <h1>Sign Up</h1>
-    <% if @user.errors.any? %>
-    <ul>
-      <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
-    <% end %>
+      <head>
+        <meta charset="utf-8">
+        <title>New User</title>
+      </head>
+    <div class="new-user user-form">
 
-    <%= form_for @user do |user| %>
-      <p>
-        <%= user.label  :first_name %>
-        <%= user.text_field :first_name %>
-      </p>
+      <body class="homepage">
+        <h1>Sign Up</h1>
+        <% if @user.errors.any? %>
+        <ul>
+          <% @user.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+        <% end %>
 
-      <p>
-        <%= user.label :last_name %>
-        <%= user.text_field :last_name %>
-      </p>
+        <%= form_for @user do |user| %>
+          <p>
+            <%= user.label  :first_name %>
+            <%= user.text_field :first_name %>
+          </p>
 
-      <p>
-        <%= user.label :age %>
-        <%= user.number_field :age %>
-      </p>
+          <p>
+            <%= user.label :last_name %>
+            <%= user.text_field :last_name %>
+          </p>
 
-      <p>
-        <%= user.label :email %>
-        <%= user.email_field :email %>
-      </p>
+          <p>
+            <%= user.label :age %>
+            <%= user.number_field :age %>
+          </p>
 
-      <p>
-        <%= user.label :username %>
-        <%= user.text_field :username %>
-      </p>
+          <p>
+            <%= user.label :email %>
+            <%= user.email_field :email %>
+          </p>
 
-      <p>
-        <%= user.label :password %>
-        <%= user.password_field :password %>
-      </p>
+          <p>
+            <%= user.label :username %>
+            <%= user.text_field :username %>
+          </p>
+
+          <p>
+            <%= user.label :password %>
+            <%= user.password_field :password %>
+          </p>
 
 
-      <%= user.submit %>
-    <% end %>
+          <%= user.submit %>
+        <% end %>
 
   </body>
   </div>

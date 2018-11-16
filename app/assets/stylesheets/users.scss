@@ -10,13 +10,11 @@
 // }
 
 .new-user {
-  margin: 20px;
+  margin: auto;
   max-width: 300px;
   padding: 16px;
-  background:rgba(0,0,0,0.5);
   text-align: center;
   color: white;
-  font-family: 'Syndicate,' sans-serif;
   vertical-align: middle;
 }
 
@@ -35,6 +33,7 @@
   margin: auto;
   width: 30%;
   text-align:left;
-  color: black;
+  color: white;
   border: 1px solid black;
+  background:rgba(0,0,0,0.5);
 }

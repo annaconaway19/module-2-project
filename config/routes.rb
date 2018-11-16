@@ -5,14 +5,14 @@ Rails.application.routes.draw do
   # resources :likes
   resources :ingredients, only: [:index]
   resources :cocktails, only: [:index, :show]
-  resources :posts, except: [:edit, :update, :delete]
+  resources :posts, except: [:edit, :update]
   resources :users, only: [:new, :create, :show, :update, :destroy]
   resources :likes, only: [:create, :destroy]
 
   resources :posts do
     resources :likes
   end
-  
+
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete'/logout', to: 'sessions#destroy', as: 'logout'
