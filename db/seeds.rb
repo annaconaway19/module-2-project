@@ -34,7 +34,7 @@ drink_ids.each do |id|
 
   ingredient_keys.each do |key|
     unless drink[key].nil? || drink[key].empty?
-      measure = drink["strMeasure#{drink[key][-1]}"]
+      measure = drink["strMeasure#{key[-1]}"]
       ing = Ingredient.where(name: drink[key], quantity: measure).first_or_create
 
       CocktailIngredient.create(cocktail: ct, ingredient: ing)
