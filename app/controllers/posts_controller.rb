@@ -40,6 +40,10 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
   end
 
+  def destroy
+    Post.find(params[:id]).destroy
+    redirect_to posts_path
+  end
 
 
   private
@@ -49,6 +53,6 @@ class PostsController < ApplicationController
       post_flavors_attributes: [
         :post_id, :flavor_id
         ]
-      )  
+      )
     end
 end
