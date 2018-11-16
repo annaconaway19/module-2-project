@@ -37,10 +37,10 @@
       <div class="row">
         <% posts.each do |post| %>
           <div class="col-lg-3 post-index">
-            <h2><%= link_to post.cocktail.name, post %></h2>
-            <img src="<%= post.image_url %>" style="width: 200px">
-            <h4><%= post.flavors[0].keyword %></h4>
-            <h4><%= post.flavors[1].keyword %></h4>
+            <div class="post-box">
+            <h3><%= link_to post.cocktail.name, post %></h3>
+            <img src="<%= post.image_url %>" style="max-width: 100%">
+            <p><%= post.flavors[0].keyword.capitalize %> & <%= post.flavors[1].keyword.capitalize %></p>
             <p><%= post.likes.count %> LIKE(S)</p>
                 <% pre_like = post.likes.find { |like| like.liker_id == current_user.id} %>
                   <% if pre_like %>
@@ -48,6 +48,7 @@
                   <% else %>
                 <%= button_to 'Like', post_likes_path(post), method: :post %>
                   <% end %>
+                    </div>
                 </div>
           <%end%>
 

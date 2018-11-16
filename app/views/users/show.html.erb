@@ -18,9 +18,9 @@
         <div class="col-lg-3 user-posts">
             <h2><%= link_to post.cocktail.name.capitalize, post %></h2>
             <p>Posted by: <%= post.user.username %></p>
-            <img src="<%= post.image_url %>" style="width: 200px" />
-            <h4><%= post.flavors[0].keyword %></h4>
-            <h4><%= post.flavors[1].keyword %></h4>
+            <img src="<%= post.image_url %>" style="max-width: 100%" />
+            <h4><%= post.flavors[0].keyword.capitalize %> & <%= post.flavors[1].keyword.capitalize %></h4>
+
             <div><%= post.likes.count %> LIKES</div>
             <% if post.likes.count > 1 %>
             <%= button_to 'Unlike', post_likes_path(post), method: :delete %>
@@ -42,9 +42,9 @@
         <div class="col-lg-3 user-posts">
             <h2><%= link_to like.post.cocktail.name.capitalize, post_path(like.post) %></h2>
             <p>Posted by: <%= like.post.user.username %></p>
-            <img src="<%= like.post.image_url %>" style="width: 200px">
-            <h4><%= like.post.flavors[0].keyword %></h4>
-            <h4><%= like.post.flavors[1].keyword %></h4>
+            <img src="<%= like.post.image_url %>" style="max-width: 100%">
+            <h4><%= like.post.flavors[0].keyword.capitalize %> & <%= like.post.flavors[1].keyword.capitalize %></h4>
+
             <div><%= like.post.likes.count %> LIKES</div>
             <% if like.post.likes.count > 1 %>
             <%= button_to 'Unlike', post_path, method: :delete %>
