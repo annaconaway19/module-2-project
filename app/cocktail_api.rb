@@ -31,9 +31,10 @@ def get_api_info
     ingredient_keys.each do |key|
       unless drink[key].empty?
         measure = drink["strMeasure#{drink[key][-1]}"]
-        ing = Ingredient.where(name: drink[key], quanity: measure).first_or_create
+        ing = Ingredient.where!(name: drink[key], quanity: measure).first_or_create
+        byebug
 
-        CocktailIngredient.create(cocktail: ct, ingredient: ing)
+        CocktailIngredient.create!(cocktail: ct, ingredient: ing)
       end
   end
 
