@@ -1,23 +1,53 @@
 <!DOCTYPE html>
+<%= render partial: "layouts/navbar" %>
 <html lang="en" dir="ltr">
-<link rel="stylesheet" href="app/assets/stylesheets/cocktails.scss">
+  <link rel="stylesheet" href="app/assets/stylesheets/posts.scss">
   <head>
     <meta charset="utf-8">
     <title></title>
   </head>
   <body>
-    <div >
+    <div class="single-post">
 
-    <% @posts.each do |post| %>
-        <h2><%= link_to post.cocktail.name, post %></h2>
-        <h4><%= link_to post.user.username %></h4>
-        <img src="<%= post.image_url %>" style="width: 200px">
-        <h4><%= post.flavors[0].keyword %></h4>
-        <h4><%= post.flavors[1].keyword %></h4>
-        <div><%= post.likes.count %> LIKES</div>
-    <% end %>
+      <% @posts.each do |post| %>
+        <h1>
+          <%= post.cocktail.name.capitalize %></h1>
 
-  </div>
+        <div class="flavors">Key Flavor Attributes:
+          <h4><%= post.flavors[0].keyword %></h4>
+          <h4><%= post.flavors[1].keyword %></h4>
+        </div>
 
+        <div>
+          <%= post.cocktail.description %>
+        </div>
+
+        <img src="<%= post.image %>"/>
+        <p>Liked by
+          <%= link_to post.user.username, user_path(post.user) %></p>
+        <div>
+          <ul>
+            <% post.cocktail.ingredients.each do |ingr| %>
+              <li style="list-style-type: none"><%= "#{ingr.name} - #{ingr.quantity}" %></li>
+            <% end %>
+          </ul>
+          <p><%= post.likes.count%>
+            likes</p>
+
+          <% pre_like = post.likes.find { |like| like.liker_id == current_user.id} %>
+            <% if pre_like %>
+              <%= button_to 'Unlike', post_like_path(post, pre_like), method: :delete %>
+            <% else %>
+              <%= button_to 'Like', post_likes_path(post), method: :post %>
+            <% end %>
+
+            <p>
+              <%= form_tag post_path(post), method: 'delete' do %>
+              <%= submit_tag "Delete Post" %>
+            <% end %>
+          <% end %>
+        </p>
+      </div>
+    </div>
   </body>
 </html>
