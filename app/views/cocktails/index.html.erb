@@ -12,7 +12,7 @@
 
     <ul>
       <% @cocktails.each do |ct| %>
-        <li style="list-style-type: none"><%= link_to ct.name.capitalize, post_path(ct) %></li>
+        <li style="list-style-type: none"><%= link_to ct.name.capitalize, cocktail_path(ct) %></li>
       <% end %>
     </ul>
 
