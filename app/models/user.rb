@@ -6,8 +6,13 @@ class User < ApplicationRecord
   has_many :cocktails, through: :posts
 
   has_secure_password
-  validates :username, uniqueness: true
-  validates :age, numericality: { greater_than_or_equal_to: 21 }
+
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :username, presence: true, uniqueness: true
+  validates :email, presence: true
+  validates :age, presence: true, numericality: { greater_than_or_equal_to: 21 }
+  validates :password, presence: true
 
     #
     #   # creates a new like row with post_id and user_id

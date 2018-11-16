@@ -13,7 +13,7 @@ class Post < ApplicationRecord
   # acts_as_votable
   mount_uploader :image, ImageUploader
   validates :image, presence: true
-  validate :different_flavors?
+  #validate :different_flavors?
 
   def different_flavors?
     errors.add(:keywords, "cannot be the same") unless self.post_flavors[0].flavor.keyword != self.post_flavors[1].flavor.keyword
