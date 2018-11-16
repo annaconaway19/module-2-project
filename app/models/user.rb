@@ -11,7 +11,7 @@ class User < ApplicationRecord
   validates :last_name, presence: true
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true
-  validates :age, presence: true, numericality: { greater_than_or_equal_to: 21 }
+  validates :age, presence: true, numericality: { greater_than_or_equal_to: 21, message: "Must be 21 years old to sign up"  }
   validates :password, presence: true
 
     #

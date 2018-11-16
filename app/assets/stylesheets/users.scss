@@ -1,12 +1,12 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-// .user-posts {
-//   display: grid;
-//   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-//   grid-gap: 10px;
-//   margin: 10px;
-//   border: 1px solid: black;
+
+// .user-show {
+//   background-image: url("https://images.pexels.com/photos/1283219/pexels-photo-1283219.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+//   background-repeat: no-repeat;
+//   background-size: contain;
+//   width: 100%;
 // }
 
 .new-user {
@@ -25,6 +25,16 @@
   padding: 10px;
   margin: auto;
   text-align: center;
-  color: white;
+  color: black;
 
+  }
+
+
+.user-form {
+  padding: 20px;
+  margin: auto;
+  width: 30%;
+  text-align:left;
+  color: black;
+  border: 1px solid black;
 }

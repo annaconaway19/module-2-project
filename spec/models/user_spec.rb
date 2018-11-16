@@ -35,7 +35,7 @@ describe User do
     expect(User.new(invalid_age)).not_to be_valid
   end
 
-  it "is invalid with a missing passowrd" do
+  it "is invalid with a missing password" do
     expect(User.new(missing_password)).not_to be_valid
   end
 

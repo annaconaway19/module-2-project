@@ -13,12 +13,30 @@
 
 .single-post {
   text-align: center;
-  position: absolute;
-  border: 1px solid black;
+  margin: auto;
 }
 
 .search_bar {
   text-align: center;
   padding-top: 20px;
   padding-bottom: 20px;
+}
+
+.post-form {
+  padding: 20px;
+  margin: auto;
+  width: 30%;
+  text-align:left;
+  color: black;
+  border: 1px solid black;
+
+}
+
+ .single-post {
+  font-size: 30px;
+  
+}
+
+.flavors {
+  border: 1px solid black;
 }

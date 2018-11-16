@@ -1,13 +1,15 @@
 <%= render partial: "layouts/navbar" %>
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+  <link rel="stylesheet" href="app/assets/stylesheets/posts.scss">
   <head>
     <meta charset="utf-8">
     <title></title>
   </head>
-  <body>
+  <body class="new-post">
 
-  <h1>Submit A Drank </h1>
+  <h1>Have a photo of your fave cocktail? Submit it here!</h1>
 
   <% if @post.errors.any? %>
     <div id="error_explanation">
@@ -24,6 +26,8 @@
     </div>
   <% end %>
 
+  <div class="post-form">
+
     <%= form_for @post do |f| %>
     <%= f.hidden_field :author_id, :value => session[:user_id] %>
       <p>
@@ -38,7 +42,7 @@
           <%= flav.collection_select :flavor_id, Flavor.all, :id, :keyword %></p>
 
           <%end%>
-    
+
         <p>
           <%= f.label :image %>
           <%= f.file_field :image %>
@@ -49,5 +53,6 @@
 
       <%end%>
 
+    </div>
     </body>
 </html>

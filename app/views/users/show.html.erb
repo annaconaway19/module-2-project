@@ -1,30 +1,37 @@
 <%= render partial: "layouts/navbar" %>
 
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <link rel="stylesheet" href="app/assets/stylesheets/users.scss">
+
   <head>
     <meta charset="utf-8">
     <title>My Drinks</title>
   </head>
-  <body>
+  <body class="user-show">
     <h1><%= @user.first_name %>'s Posts:</h1>
 
     <% @user.posts.each_slice(3) do |posts| %>
       <div class="row">
         <% posts.each do |post| %>
         <div class="col-lg-3 user-posts">
-            <h2><%= link_to post.cocktail.name, post %></h2>
+            <h2><%= link_to post.cocktail.name.capitalize, post %></h2>
             <p>Posted by: <%= post.user.username %></p>
             <img src="<%= post.image_url %>" style="width: 200px" />
             <h4><%= post.flavors[0].keyword %></h4>
             <h4><%= post.flavors[1].keyword %></h4>
+            <div><%= post.likes.count %> LIKES</div>
+            <% if post.likes.count > 1 %>
+            <%= button_to 'Unlike', post_likes_path(post), method: :delete %>
+          <% else %>
+            <%= button_to 'Like', post_likes_path(post) %>
+
+          <% end %>
           </div>
         <%end%>
         </div>
         <%end%>
-
-
 
 
     <h1> Drinks I Like:</h1>
@@ -33,12 +40,18 @@
       <div class="row">
           <% likes.each do |like| %>
         <div class="col-lg-3 user-posts">
-            <h2><%= link_to like.post.cocktail.name, post_path(like.post) %></h2>
+            <h2><%= link_to like.post.cocktail.name.capitalize, post_path(like.post) %></h2>
             <p>Posted by: <%= like.post.user.username %></p>
             <img src="<%= like.post.image_url %>" style="width: 200px">
             <h4><%= like.post.flavors[0].keyword %></h4>
             <h4><%= like.post.flavors[1].keyword %></h4>
             <div><%= like.post.likes.count %> LIKES</div>
+            <% if like.post.likes.count > 1 %>
+            <%= button_to 'Unlike', post_path, method: :delete %>
+          <% else %>
+            <%= button_to 'Like', post_path %>
+
+          <% end %>
           </div>
         <%end%>
         </div>

@@ -5,12 +5,17 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+    <h1>Pick Your Poison</h1>
   </head>
   <body>
+    <div class="cocktail-list">
+
     <ul>
       <% @cocktails.each do |ct| %>
-        <li><%= link_to ct.name, post_path(ct) %></li>
+        <li style="list-style-type: none"><%= link_to ct.name.capitalize, post_path(ct) %></li>
       <% end %>
     </ul>
+
+    </div>
   </body>
 </html>

@@ -1,61 +1,74 @@
 <!DOCTYPE html>
+<%= render partial: "layouts/navbar" %>
 <html lang="en" dir="ltr">
-<link rel="stylesheet" href="app/assets/stylesheets/application.css">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    <%= render partial: "layouts/navbar" %>
 
-    <% if @user.errors.any? %>
-    <ul>
-      <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
-    <% end %>
+<link rel="stylesheet" href="app/assets/stylesheets/users.css">
+<head>
+  <h1>
+    Update My Info
+  </h1>
+      <title>Bartender's Choice</title>
+      <%= csrf_meta_tags %>
+      <%= csp_meta_tag %>
 
-    <%= form_for @user do |user| %>
-      <p>
-        <%= user.label  :first_name %>
-        <%= user.text_field :first_name %>
-      </p>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+      <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-      <p>
-        <%= user.label :last_name %>
-        <%= user.text_field :last_name %>
-      </p>
+    </head>
 
-      <p>
-        <%= user.label :age %>
-        <%= user.number_field :age %>
-      </p>
+      <body>
+      <div class="user-form"">
 
-      <p>
-        <%= user.label :email %>
-        <%= user.email_field :email %>
-      </p>
+        <% if @user.errors.any? %>
+        <ul>
+          <% @user.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+        <% end %>
 
-      <p>
-        <%= user.label :username %>
-        <%= user.text_field :username %>
-      </p>
+        <%= form_for @user do |user| %>
+          <p>
+            <%= user.label  :first_name %>
+            <%= user.text_field :first_name %>
+          </p>
 
-      <p>
-        <%= user.label :password %>
-        <%= user.password_field :password %>
-      </p>
+          <p>
+            <%= user.label :last_name %>
+            <%= user.text_field :last_name %>
+          </p>
+
+          <p>
+            <%= user.label :age %>
+            <%= user.number_field :age %>
+          </p>
+
+          <p>
+            <%= user.label :email %>
+            <%= user.email_field :email %>
+          </p>
+
+          <p>
+            <%= user.label :username %>
+            <%= user.text_field :username %>
+          </p>
+
+          <p>
+            <%= user.label :password %>
+            <%= user.password_field :password %>
+          </p>
 
 
-      <%= user.submit %>
-    <% end %>
+          <%= user.submit %>
+        <% end %>
 
 
-    <%= form_tag user_path(@user), method: 'delete' do %>
-      <%= submit_tag "Delete My Account"  %>
-    <% end %>
+        <%= form_tag user_path(@user), method: 'delete' do %>
+          <%= submit_tag "Delete My Account"  %>
+        <% end %>
 
 
-  </body>
+      </div>
+      </body>
 </html>

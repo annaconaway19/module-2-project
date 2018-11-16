@@ -1,25 +1,27 @@
-<!DOCTYPE html>
-<html>
+<html lang="en" dir="ltr">
   <head>
+    <meta charset="utf-8">
     <h1>
+      <% if !current_page?(login_path) %>
       <%= link_to "Bartender's Choice", posts_path %>
-    </h1>
-        <title>Bartender's Choice</title>
-        <%= csrf_meta_tags %>
+      <%end%>
+      <%= csrf_meta_tags %>
         <%= csp_meta_tag %>
-
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    </h1>
+    <title></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
         <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
-      </head>
-        <% if session[:user_id] %>
-          <p><%= "Logged in as #{ User.find(session[:user_id]).username }" %><p>
-          <%= link_to 'Logout', logout_path, method: 'delete' %>
-        <% else %>
-          <%= link_to "Login", login_path %>
-        <% end %>
-      <body>
-          <%= yield %>
-      </body>
+  </head>
+  <body>
+    <% if session[:user_id] %>
+      <p><%= "Logged in as #{ User.find(session[:user_id]).username }" %><p>
+      <%= link_to 'Logout', logout_path, method: 'delete' %>
+    <% else %>
+      <%= link_to "Login", login_path %>
+    <% end %>
+    <body>
+      <%= yield %>
+    </body>
+  </body>
 </html>
