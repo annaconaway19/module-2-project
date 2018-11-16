@@ -5,12 +5,10 @@ class Post < ApplicationRecord
   has_many :post_flavors
   has_many :flavors, through: :post_flavors
   has_many :likes, dependent: :destroy
-  # has_many :users, through: :likes
+
   accepts_nested_attributes_for :post_flavors
   accepts_nested_attributes_for :cocktail
-  # accepts_nested_attributes_for :ingredient
 
-  # acts_as_votable
   mount_uploader :image, ImageUploader
   validates :image, presence: true
   #validate :different_flavors?

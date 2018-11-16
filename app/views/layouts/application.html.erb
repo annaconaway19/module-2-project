@@ -2,7 +2,7 @@
   <head>
     <meta charset="utf-8">
     <h1>
-      <% if !current_page?(login_path) %>
+      <% if !current_page?(login_path) && !current_page?(new_user_path)%>
       <%= link_to "Bartender's Choice", posts_path %>
       <%end%>
       <%= csrf_meta_tags %>
