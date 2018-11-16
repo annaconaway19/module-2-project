@@ -1,49 +1,61 @@
-<%= render partial: "layouts/navbar" %>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<link rel="stylesheet" href="app/assets/stylesheets/application.css">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <%= render partial: "layouts/navbar" %>
 
-<% if @user.errors.any? %>
-<ul>
-  <% @user.errors.full_messages.each do |msg| %>
-    <li><%= msg %></li>
-  <% end %>
-</ul>
-<% end %>
+    <% if @user.errors.any? %>
+    <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+    <% end %>
 
-<%= form_for @user do |user| %>
-  <p>
-    <%= user.label  :first_name %>
-    <%= user.text_field :first_name %>
-  </p>
+    <%= form_for @user do |user| %>
+      <p>
+        <%= user.label  :first_name %>
+        <%= user.text_field :first_name %>
+      </p>
 
-  <p>
-    <%= user.label :last_name %>
-    <%= user.text_field :last_name %>
-  </p>
+      <p>
+        <%= user.label :last_name %>
+        <%= user.text_field :last_name %>
+      </p>
 
-  <p>
-    <%= user.label :age %>
-    <%= user.number_field :age %>
-  </p>
+      <p>
+        <%= user.label :age %>
+        <%= user.number_field :age %>
+      </p>
 
-  <p>
-    <%= user.label :email %>
-    <%= user.email_field :email %>
-  </p>
+      <p>
+        <%= user.label :email %>
+        <%= user.email_field :email %>
+      </p>
 
-  <p>
-    <%= user.label :username %>
-    <%= user.text_field :username %>
-  </p>
+      <p>
+        <%= user.label :username %>
+        <%= user.text_field :username %>
+      </p>
 
-  <p>
-    <%= user.label :password %>
-    <%= user.password_field :password %>
-  </p>
-
-
-  <%= user.submit %>
-<% end %>
+      <p>
+        <%= user.label :password %>
+        <%= user.password_field :password %>
+      </p>
 
 
-<%= form_tag user_path(@user), method: 'delete' do %>
-  <%= submit_tag "Delete My Account"  %>
-<% end %>
+      <%= user.submit %>
+    <% end %>
+
+
+    <%= form_tag user_path(@user), method: 'delete' do %>
+      <%= submit_tag "Delete My Account"  %>
+    <% end %>
+
+
+  </body>
+</html>

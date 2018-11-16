@@ -1,37 +1,46 @@
-<%= render partial: "layouts/navbar" %>
-<body>
-  <div class="single-post">
-    <link rel="stylesheet" href="app/assets/stylesheets/posts.scss">
-    <h1>More about
-      <%= @post.cocktail.name %>:</h1>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<link rel="stylesheet" href="app/assets/stylesheets/posts.scss">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div class="single-post">
 
-    <div>
-      <h4><%= @post.flavors[0].keyword %></h4>
-      <h4><%= @post.flavors[1].keyword %></h4>
-    </div>
+      <h1>More about
+        <%= @post.cocktail.name %>:</h1>
 
-    <div>
-      <%= @post.cocktail.description %>
-    </div>
+      <div>
+        <h4><%= @post.flavors[0].keyword %></h4>
+        <h4><%= @post.flavors[1].keyword %></h4>
+      </div>
 
-    <img src="<%= @post.image_url %>"/>
-    <p>Liked by
-      <%= link_to @post.user.username, user_path(@post.user) %></p>
-    <div>
-      <ul>
-        <% @post.cocktail.ingredients.each do |ingr| %>
-          <li><%= "#{ingr.name} - #{ingr.quantity}" %></li>
+      <div>
+        <%= @post.cocktail.description %>
+      </div>
+
+      <img src="<%= @post.image_url %>"/>
+      <p>Liked by
+        <%= link_to @post.user.username, user_path(@post.user) %></p>
+      <div>
+        <ul>
+          <% @post.cocktail.ingredients.each do |ingr| %>
+            <li><%= "#{ingr.name} - #{ingr.quantity}" %></li>
+          <% end %>
+        </ul>
+        <p><%= (@post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+
+        <% pre_like = @post.likes.find { |like| like.liker_id == current_user.id} %>
+        <% if pre_like %>
+          <%= button_to 'Unlike', post_like_path(@post, pre_like), method: :delete %>
+        <% else %>
+          <%= button_to 'Like', post_likes_path(@post), method: :post %>
         <% end %>
-      </ul>
-      <p><%= (@post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
 
-      <% pre_like = @post.likes.find { |like| like.liker_id == current_user.id} %>
-      <% if pre_like %>
-        <%= button_to 'Unlike', post_like_path(@post, pre_like), method: :delete %>
-      <% else %>
-        <%= button_to 'Like', post_likes_path(@post), method: :post %>
-      <% end %>
-
+      </div>
     </div>
-  </div>
-</body>
+  </body>
+
+</html>
+<%= render partial: "layouts/navbar" %>

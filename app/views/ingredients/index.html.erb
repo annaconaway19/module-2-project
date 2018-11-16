@@ -1,7 +1,17 @@
-<%= render partial: "layouts/navbar" %>
 
-<ul>
-  <% @ingredients.each do |ingr| %>
-    <li><%= ingr.name %></li>
-  <% end %>
-</ul>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <%= render partial: "layouts/navbar" %>
+
+    <ul>
+      <% @ingredients.each do |ingr| %>
+        <li><%= ingr.name %></li>
+      <% end %>
+    </ul>
+  </body>
+</html>

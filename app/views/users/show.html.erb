@@ -2,40 +2,47 @@
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+<link rel="stylesheet" href="app/assets/stylesheets/users.scss">
   <head>
     <meta charset="utf-8">
     <title>My Drinks</title>
   </head>
   <body>
-    <h2><%= @user.first_name %>'s Posts:</h2>
+    <h1><%= @user.first_name %>'s Posts:</h1>
 
-    <div class="user-posts">
-        <% @user.posts.each do |post| %>
+    <% @user.posts.each_slice(3) do |posts| %>
+      <div class="row">
+        <% posts.each do |post| %>
+        <div class="col-lg-3 user-posts">
             <h2><%= link_to post.cocktail.name, post %></h2>
             <p>Posted by: <%= post.user.username %></p>
             <img src="<%= post.image_url %>" style="width: 200px" />
             <h4><%= post.flavors[0].keyword %></h4>
             <h4><%= post.flavors[1].keyword %></h4>
-
           </div>
-
+        <%end%>
+        </div>
         <%end%>
 
 
-    <h2> Drinks I Like:</h2>
-    <div class="user-posts">
-          <% @user.likes.each do |like| %>
+
+
+    <h1> Drinks I Like:</h1>
+
+      <% @user.likes.each_slice(3) do |likes| %>
+      <div class="row">
+          <% likes.each do |like| %>
+        <div class="col-lg-3 user-posts">
             <h2><%= link_to like.post.cocktail.name, post_path(like.post) %></h2>
             <p>Posted by: <%= like.post.user.username %></p>
             <img src="<%= like.post.image_url %>" style="width: 200px" />
             <h4><%= like.post.flavors[0].keyword %></h4>
             <h4><%= like.post.flavors[1].keyword %></h4>
             <div><%= like.post.likes.count %> LIKES</div>
-
           </div>
         <%end%>
-
-
+        </div>
+        <%end%>
 
   </body>
 </html>

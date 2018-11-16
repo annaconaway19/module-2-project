@@ -1,7 +1,16 @@
 <%= render partial: "layouts/navbar" %>
-
-<ul>
-  <% @cocktails.each do |ct| %>
-    <li><%= link_to ct.name, post_path(ct) %></li>
-  <% end %>
-</ul>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<link rel="stylesheet" href="app/assets/stylesheets/application.css">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <ul>
+      <% @cocktails.each do |ct| %>
+        <li><%= link_to ct.name, post_path(ct) %></li>
+      <% end %>
+    </ul>
+  </body>
+</html>

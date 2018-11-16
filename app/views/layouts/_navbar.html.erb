@@ -5,25 +5,20 @@
     <title></title>
   </head>
   <body>
-    <nav class="navbar-navbar default">
+    <nav class="navbar navbar-light bg-light">
 
-      <div class="container fluid">
 
-      <div class="navbar-header">
-         <%= link_to 'Cocktail Finder', posts_path(session[:user_id]) %>
-        </div>
-
-            <ul class="navbar-nav">
-            <li class="active">
-                <%= link_to 'Home', posts_path(session[:user_id]) %><span class="sr-only">(current)</span>
-            </li>
-            <li><%= link_to 'My Profile', account_path(session[:user_id]) %></li>
-            <li><%= link_to 'My Drinks', user_path(session[:user_id]) %></li>
-            <li><%= link_to 'Cocktail Catalogue', cocktails_path(session[:user_id]) %></li>
-            <li><%= link_to 'Create A Cocktail', new_post_path %></li>
-          </ul>
-
+        <div class="navbar-header" style="list-style-type: none">
+          <%= link_to 'Home', posts_path(session[:user_id]), class: "nav-link" %>
           </div>
+
+              
+              <li class="nav-item" style="list-style-type: none"><%= link_to 'My Profile', account_path(session[:user_id]), class: "nav-link" %></li>
+              <li class="nav-item" style="list-style-type: none"><%= link_to 'My Drinks', user_path(session[:user_id]), class: "nav-link" %></li>
+              <li class="nav-item" style="list-style-type: none"><%= link_to 'Cocktail Catalogue', cocktails_path(session[:user_id]), class: "nav-link" %></li>
+              <li class="nav-item" style="list-style-type: none"><%= link_to 'Create A Cocktail', new_post_path, class: "nav-link" %></li>
+
+
       </nav>
   </body>
 </html>

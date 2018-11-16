@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Cocktails</title>
+    <h1>Bartender's Choice</h1>
+    <title>Bartender's Choice</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,12 +11,12 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
   </head>
-  <% if session[:user_id] %>
-    <h3><%= "Logged in as #{ User.find(session[:user_id]).username }" %></h3>
-    <li><%= link_to 'Logout', logout_path, method: 'delete' %></li>
-  <% else %>
-    <li><%= link_to "Login", login_path %></li>
-  <% end %>
+    <% if session[:user_id] %>
+      <p><%= "Logged in as #{ User.find(session[:user_id]).username }" %><p>
+      <%= link_to 'Logout', logout_path, method: 'delete' %>
+    <% else %>
+      <%= link_to "Login", login_path %>
+    <% end %>
   <body>
       <%= yield %>
   </body>
