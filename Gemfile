@@ -69,3 +69,4 @@ gem 'carrierwave', '~> 1.0'
 
 # Rspec testing
 gem 'rspec-rails'
+gem "rest-client"
