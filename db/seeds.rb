@@ -13,7 +13,11 @@ Post.destroy_all
 Like.destroy_all
 Ingredient.destroy_all
 
+flavor_list = ['aromatic','balanced','bitter','bold','buttery','clean','cold','complex','conversational','cool','creamy','crisp','dense','dreamy','dry','mellow','mild','numbing','nutty','oaky','peppery','pleasant','pronounced','rarest','refreshing','revitalizing','rich','robust','rousing','electrifying','elegant','exhilarating','exotic','fizzy','flavorful','floral','fragrant','fresh','fruity','intense','inviting','irresistible','juicy','light','savory','sensuous','sharp','silky','simple','smooth','soothing','spicy','stiff','strong','stylish','subtle','sweet','tangy','tart','tingly','warming']
 
+flavor_list.each do |flav|
+  Flavor.create(keyword: flav)
+end
 
 user1 = User.create(email: "abc123@gmail.com", first_name: "Anna", last_name: "Conaway", username: "annaconaway", password: "password", age: 27)
 user2 = User.create(email: "12345@gmail.com", first_name: "Jason", last_name: "Campbell", username: "jasoncampbell", password: "pw123", age: 32)
@@ -35,11 +39,11 @@ cocktail14 = Cocktail.create(name: "Mod Margarita".downcase, description: "May o
 cocktail15 = Cocktail.create(name: "Code Fashioned".downcase, description: "The most abstract of cocktails")
 
 
-drink_flavors = ["refreshing", "tart", "savory", "fruit", "strong", "spicy", "sweet", "fizzy", "licorice", "herbal", "vegetal", "bitter", "unusual", "floral", "smoky"]
-
-drink_flavors.each do |flavor|
-  Flavor.create(keyword: flavor)
-end
+# drink_flavors = ["refreshing", "tart", "savory", "fruit", "strong", "spicy", "sweet", "fizzy", "licorice", "herbal", "vegetal", "bitter", "unusual", "floral", "smoky"]
+#
+# drink_flavors.each do |flavor|
+#   Flavor.create(keyword: flavor)
+# end
 
 post1 = Post.create(user: User.all.sample, cocktail: cocktail1, image: File.open("images/tequilasunrise.jpeg"))
 

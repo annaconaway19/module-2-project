@@ -66,3 +66,6 @@ gem 'acts_as_votable', '~> 0.12.0'
 
 # Adds image upload functionality
 gem 'carrierwave', '~> 1.0'
+
+# Rspec testing
+gem 'rspec-rails'

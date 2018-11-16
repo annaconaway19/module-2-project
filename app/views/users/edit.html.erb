@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-
+<%= render partial: "layouts/navbar" %>
 <html lang="en" dir="ltr">
 
-<link rel="stylesheet" href="app/assets/stylesheets/application.css">
+<link rel="stylesheet" href="app/assets/stylesheets/users.css">
 <head>
   <h1>
-    <%= link_to "Bartender's Choice", posts_path %>
+    Update My Info
   </h1>
       <title>Bartender's Choice</title>
       <%= csrf_meta_tags %>
@@ -16,66 +16,59 @@
       <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
     </head>
-      <% if session[:user_id] %>
-        <p><%= "Logged in as #{ User.find(session[:user_id]).username }" %><p>
-        <%= link_to 'Logout', logout_path, method: 'delete' %>
-      <% else %>
-        <%= link_to "Login", login_path %>
-      <% end %>
-    <body>
-        <%= yield %>
-    </body>
-  <body>
-    <%= render partial: "layouts/navbar" %>
 
-    <% if @user.errors.any? %>
-    <ul>
-      <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
-    <% end %>
+      <body>
+      <div class="user-form"">
 
-    <%= form_for @user do |user| %>
-      <p>
-        <%= user.label  :first_name %>
-        <%= user.text_field :first_name %>
-      </p>
+        <% if @user.errors.any? %>
+        <ul>
+          <% @user.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+        <% end %>
 
-      <p>
-        <%= user.label :last_name %>
-        <%= user.text_field :last_name %>
-      </p>
+        <%= form_for @user do |user| %>
+          <p>
+            <%= user.label  :first_name %>
+            <%= user.text_field :first_name %>
+          </p>
 
-      <p>
-        <%= user.label :age %>
-        <%= user.number_field :age %>
-      </p>
+          <p>
+            <%= user.label :last_name %>
+            <%= user.text_field :last_name %>
+          </p>
 
-      <p>
-        <%= user.label :email %>
-        <%= user.email_field :email %>
-      </p>
+          <p>
+            <%= user.label :age %>
+            <%= user.number_field :age %>
+          </p>
 
-      <p>
-        <%= user.label :username %>
-        <%= user.text_field :username %>
-      </p>
+          <p>
+            <%= user.label :email %>
+            <%= user.email_field :email %>
+          </p>
 
-      <p>
-        <%= user.label :password %>
-        <%= user.password_field :password %>
-      </p>
+          <p>
+            <%= user.label :username %>
+            <%= user.text_field :username %>
+          </p>
+
+          <p>
+            <%= user.label :password %>
+            <%= user.password_field :password %>
+          </p>
 
 
-      <%= user.submit %>
-    <% end %>
+          <%= user.submit %>
+        <% end %>
 
 
-    <%= form_tag user_path(@user), method: 'delete' do %>
-      <%= submit_tag "Delete My Account"  %>
-    <% end %>
+        <%= form_tag user_path(@user), method: 'delete' do %>
+          <%= submit_tag "Delete My Account"  %>
+        <% end %>
 
 
-  </body>
+      </div>
+      </body>
 </html>
