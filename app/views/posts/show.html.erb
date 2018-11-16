@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+<%= render partial: "layouts/header" %>
 <link rel="stylesheet" href="app/assets/stylesheets/posts.scss">
   <head>
     <meta charset="utf-8">
@@ -26,7 +27,7 @@
       <div>
         <ul>
           <% @post.cocktail.ingredients.each do |ingr| %>
-            <li><%= "#{ingr.name} - #{ingr.quantity}" %></li>
+            <li style="list-style-type: none"><%= "#{ingr.name} - #{ingr.quantity}" %></li>
           <% end %>
         </ul>
         <p><%= (@post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
