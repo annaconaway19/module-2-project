@@ -4,4 +4,7 @@ class Cocktail < ApplicationRecord
   has_many :posts
   has_many :users, through: :posts
   has_many :likes, through: :posts
+
+  validates :name, presence: true
+  validates :description, presence: true
 end
